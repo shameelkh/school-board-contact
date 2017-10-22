@@ -1,3 +1,6 @@
+import fetch from 'isomorphic-fetch'
+
+const BASE_URL = 'https://localhost:8080'
 
 const UPDATE_SELECTED_BOARD_ID = 'UPDATE_SELECTED_BOARD_ID'
 
@@ -23,5 +26,16 @@ const receiveBoard = (board) => {
     return {
         type: RECEIVE_BOARD,
         board
+    }
+}
+
+const fetchBoard = (boardId) => {
+    return (dispatch) => {
+        dispatch( requestBoard(boardId) )
+
+        fetch(BASE_URL + `/employer/${boardId}`)
+                    .then(response => response.json())
+                    .then(board => dispatch(receiveBoard(board)))
+
     }
 }
