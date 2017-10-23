@@ -5,7 +5,7 @@ import { fetchBoard }  from '../actions'
 
 class BoardInfoPage extends Component {
     static propTypes = {
-        selectedBoardId: PropTypes.number.isRequired,
+        selectedBoardId: PropTypes.string.isRequired,
         boardInfo: PropTypes.object.isRequired,
         loadData: PropTypes.func.isRequired
     }

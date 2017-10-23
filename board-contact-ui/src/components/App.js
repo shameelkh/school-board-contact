@@ -1,5 +1,6 @@
 import React from 'react'
 import BoardInfoPage from '../containers/BoardInfoPage'
+import ContactsPage from '../containers/ContactsPage'
 import Search from '../containers/Search'
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
             <hr/>
             <BoardInfoPage/>
             <hr/>
+            <ContactsPage/>
         </div>
     )
 }
