@@ -2,40 +2,39 @@ import fetch from 'isomorphic-fetch'
 
 const BASE_URL = 'https://localhost:8080'
 
-const UPDATE_SELECTED_BOARD_ID = 'UPDATE_SELECTED_BOARD_ID'
+export const UPDATE_SELECTED_BOARD_ID = 'UPDATE_SELECTED_BOARD_ID'
 
-const REQUEST_BOARD = 'REQUEST_BOARD'
-const RECEIVE_BOARD = 'RECEIVE_BOARD'
-const FETCH_BOARD = 'FETCH_BOARD'
+export const REQUEST_BOARD = 'REQUEST_BOARD'
+export const RECEIVE_BOARD = 'RECEIVE_BOARD'
+export const FETCH_BOARD = 'FETCH_BOARD'
 
-const updateSelectedBoardId = (selectedBoardId) => {
+export const updateSelectedBoardId = (selectedBoardId) => {
     return {
-        type: UPDATE_SELECTED_BOARD_ID
+        type: UPDATE_SELECTED_BOARD_ID,
         selectedBoardId
     }
 }
 
-const requestBoard = (selectedBoardId) => {
+export const requestBoard = (selectedBoardId) => {
     return {
         type: REQUEST_BOARD,
         selectedBoardId
     }
 }
 
-const receiveBoard = (board) => {
+export const receiveBoard = (board) => {
     return {
         type: RECEIVE_BOARD,
         board
     }
 }
 
-const fetchBoard = (boardId) => {
+export const fetchBoard = (boardId) => {
     return (dispatch) => {
         dispatch( requestBoard(boardId) )
 
-        fetch(BASE_URL + `/employer/${boardId}`)
+        fetch('http://localhost:8080/employer/' + boardId)
                     .then(response => response.json())
                     .then(board => dispatch(receiveBoard(board)))
-
     }
 }
