@@ -24,8 +24,9 @@ class BoardInfoPage extends Component {
         const board = this.props.boardInfo.board
         return (
             <div>
-            <h2>School Board Info Data</h2>
-            {board.boardName}
+            <h2>School Board Info</h2>
+            <p>School Board: {board.boardName}</p>
+            <p>Active: {board.active ? "Yes" : "No"}</p>
             </div>
         )
     }
