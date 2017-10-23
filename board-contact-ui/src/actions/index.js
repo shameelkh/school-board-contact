@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-fetch'
 
-const BASE_URL = 'https://localhost:8080'
-
 export const UPDATE_SELECTED_BOARD_ID = 'UPDATE_SELECTED_BOARD_ID'
 
 export const REQUEST_BOARD = 'REQUEST_BOARD'
@@ -57,9 +55,9 @@ export const receiveContacts = (contacts) => {
     }
 }
 
-export const fetchContacts = (selectedBoardId) => {
+export const fetchContacts = (boardId) => {
     return (dispatch) => {
-        dispatch( requestContacts(selectedBoardId) )
+        dispatch( requestContacts(boardId) )
 
         fetch('http://localhost:8080/contacts/' + boardId)
                     .then(response => response.json())
