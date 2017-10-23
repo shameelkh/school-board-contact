@@ -1,6 +1,6 @@
-import { combineReducers } from 'react-redux'
-import { boardInfo } from './boardInfo'
-import { selectedBoardId } from './selectedBoardId'
+import { combineReducers } from 'redux'
+import boardInfo from './boardInfo'
+import selectedBoardId from './selectedBoardId'
 
 const boardContactAppReducer = combineReducers({selectedBoardId, boardInfo})
 
