@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
 import boardContactAppReducer from './reducers'
-import App from './components/App'
+import Root from './components/Root'
 
 let store = createStore(
                 boardContactAppReducer,
@@ -17,8 +17,6 @@ let store = createStore(
             )
 
  render(
-   <Provider store={store}>
-     <App />
-   </Provider>,
+   <Root store={store}/>,
    document.getElementById('root')
  )
