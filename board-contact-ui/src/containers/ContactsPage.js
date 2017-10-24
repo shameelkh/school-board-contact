@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchContacts } from '../actions'
+import Contact from '../components/Contact'
 
 class ContactsPage extends Component {
     static propTypes = {
@@ -29,12 +30,10 @@ class ContactsPage extends Component {
 
         return (
             <div>
-                <ul>
+                <h2>Contacts</h2>
                     {contacts.map(contact => (
-                        <li>{contact.firstName}</li>
+                        <Contact contact={contact} />
                     ))}
-                </ul>
-
             </div>
         )
     }
