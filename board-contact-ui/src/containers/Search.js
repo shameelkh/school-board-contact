@@ -14,10 +14,12 @@ let Search = ({dispatch}) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                Board Id: <input type="text" ref={(input) => {boardInput = input}}/>
-                <button type="submit">Search</button>
+            <form className="form-inline" onSubmit={handleSubmit}>
+                <input type="text" className="form-control mb-2 mr-sm-2 mb-sm-0" ref={(input) => {boardInput = input}} id="inlineFormInput" placeholder="Board Id" />
+                <button type="submit" class="btn btn-primary">Search</button>
             </form>
+
+
         </div>
     )
 }

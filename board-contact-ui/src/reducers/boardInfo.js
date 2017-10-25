@@ -2,7 +2,7 @@ import { REQUEST_BOARD, RECEIVE_BOARD } from '../actions'
 
 const defaultState = {
     isFetching: false,
-    board: {}
+    board: undefined
 }
 
 const receiveBoardInfo = (board) => {

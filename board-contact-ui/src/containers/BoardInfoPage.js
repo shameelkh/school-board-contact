@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchBoard }  from '../actions'
+import ProfilePage from '../components/ProfilePage'
 
 class BoardInfoPage extends Component {
     static propTypes = {
@@ -22,11 +23,15 @@ class BoardInfoPage extends Component {
 
     render() {
         const board = this.props.boardInfo.board
+
+        if(board === undefined) {
+            return (<div></div>)
+        }
+
         return (
             <div>
             <h2>School Board Info</h2>
-            <p>School Board: {board.boardName}</p>
-            <p>Active: {board.active ? "Yes" : "No"}</p>
+            <ProfilePage board={board} />
             </div>
         )
     }
