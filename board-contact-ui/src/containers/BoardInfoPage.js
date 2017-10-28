@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Switch } from 'react-router-dom';
 import { fetchBoard }  from '../actions'
 import ProfilePage from '../components/ProfilePage'
 
@@ -8,7 +10,9 @@ class BoardInfoPage extends Component {
     static propTypes = {
         selectedBoardId: PropTypes.string.isRequired,
         boardInfo: PropTypes.object.isRequired,
-        loadData: PropTypes.func.isRequired
+        loadData: PropTypes.func.isRequired,
+        params: PropTypes.object.isRequired,
+        match: PropTypes.object.isRequired
     }
 
     componentWillMount() {
@@ -21,6 +25,12 @@ class BoardInfoPage extends Component {
         }
     }
 
+    renderProfilePage = () => {
+        return (
+            <ProfilePage board={this.props.boardInfo.board} />
+        )
+    }
+
     render() {
         const board = this.props.boardInfo.board
 
@@ -30,8 +40,12 @@ class BoardInfoPage extends Component {
 
         return (
             <div>
-            <h2>School Board Info</h2>
-            <ProfilePage board={board} />
+                <h2>School Board Info</h2>
+                <br/>
+
+                <Switch>
+                    <Route path={`${this.props.match.path}/profile`}  render={this.renderProfilePage} />
+                </Switch>
             </div>
         )
     }
@@ -52,6 +66,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardInfoPage)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BoardInfoPage))
 
 

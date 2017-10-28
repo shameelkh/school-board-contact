@@ -1,0 +1,17 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    color: white;
+    background-color: #37393d
+}
+
+.content {
+    padding: 5% 10%
+}
+
+.float-left {
+    float: right
+}
