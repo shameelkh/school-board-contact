@@ -22,9 +22,9 @@ public class Application {
 
 
         // Create school boards
-        Employer employer1 = new Employer(1, "Halton District", true, 20120101, null, "Sam", address1, "6073332222","12:00", "12:00");
-        Employer employer2 = new Employer(2, "Catholic District School Board", true, 19901005, null, "Catty", address2, "9056662233","12:00", "12:00");
-        Employer employer3 = new Employer(3, "Allson School Board", false, 18021201, 20150202, "Sam", address3, "9013341122","12:00", "12:00");
+        Employer employer1 = new Employer(1, "Halton District", true, 20120101, null, "Sam", address1, "www.HaltonDistrict.com", "6073332222","12:00", "12:00");
+        Employer employer2 = new Employer(2, "Catholic District School Board", true, 19901005, null, "Catty", address2, "", "9056662233","12:00", "12:00");
+        Employer employer3 = new Employer(3, "Allson School Board", false, 18021201, 20150202, "Sam", address3, "www.Allson.com", "9013341122","12:00", "12:00");
 
         employersMap.put(employer1.getBoardNumber(), employer1);
         employersMap.put(employer2.getBoardNumber(), employer2);

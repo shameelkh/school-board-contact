@@ -14,6 +14,7 @@ public class Employer {
     private Integer closeDate;
     private String accountOwner;
     private Address address;
+    private String website;
     private String phoneNumber;
     private String openTime;
     private String closeTime;
