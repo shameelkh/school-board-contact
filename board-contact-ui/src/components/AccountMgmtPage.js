@@ -8,7 +8,7 @@ const AccountMgmtPage = (boardInfo) => {
     }
 
     return (
-        <div className="row">
+        <div>
             <form>
                 <div class="form-group row">
                   <label class="col-md-2 col-form-label">Account Owner</label>

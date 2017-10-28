@@ -1,6 +1,7 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: "Helvetica"
 }
 
 .header {
@@ -9,9 +10,24 @@ body {
 }
 
 .content {
-    padding: 5% 10%
+    padding: 2% 10%
 }
 
 .float-left {
     float: right
+}
+
+.school-board-name {
+    margin-left: 14px;
+    font-size: 25px
+}
+
+.navigation {
+    margin-left: 0;
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+
+.main-content {
+    margin-left: 15px
 }

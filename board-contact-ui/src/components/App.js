@@ -44,27 +44,29 @@ class App extends Component {
 
     render() {
         let match = this.props.match
-
+        let boardName = (this.props.boardInfo.board ? this.props.boardInfo.board.boardName : '')
         return (
             <Router>
                 <div className="container-fluid">
                   <div className="row">
                     <Header />
                   </div>
-                  <div className="row">
-                    <div className="col-md-12">
-                       <Navigation />
-                    </div>
-                  </div>
 
                   <div className="row content">
-                    <Switch>
-                        <Route path={`${match.path}profile`} render={this.renderProfilePage} />
-                        <Route path={`${match.path}account-mgmt`} render={this.renderAccountMgmtPage} />
-                        <Route path={`${match.path}contacts`} component={ContactsPage} />
-                    </Switch>
+                     <h4 class="school-board-name">{boardName}</h4>
+                      <div>
+                        <div class="">
+                            <Navigation />
+                        </div>
+                        <div class="main-content">
+                            <Switch>
+                                <Route path={`${match.path}profile`} render={this.renderProfilePage} />
+                                <Route path={`${match.path}account-mgmt`} render={this.renderAccountMgmtPage} />
+                                <Route path={`${match.path}contacts`} component={ContactsPage} />
+                            </Switch>
+                        </div>
+                      </div>
                   </div>
-
                 </div>
             </Router>
     )}

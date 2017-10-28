@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const Navigation = () => {
     return (
-        <div>
-            <ul className="nav nav-pills nav-justified">
+        <div class="navigation">
+            <ul className="nav nav-pills">
               <li className="nav-item">
-                <Link className="nav-link active" to={'/profile'}>Profile</Link>
+                <Link className="nav-link" to={'/profile'}>Profile</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={'/account-mgmt'}>Account Mgmt</Link>
