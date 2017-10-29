@@ -39,7 +39,7 @@ class App extends Component {
 
     renderEditProfileForm = () => {
         return (
-            <EditProfileForm boardInfo={this.props.boardInfo} />
+            <EditProfileForm board={this.props.boardInfo.board} />
         )
     }
 
