@@ -31,3 +31,25 @@ body {
 .main-content {
     margin-left: 15px
 }
+
+.group-section {
+    margin-bottom: 20px;
+}
+
+.field-section {
+    display: inline-block;
+    margin-right: 100px;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.field-content {
+    font-size: 20px
+}
+
+.field-name {
+    font-weight: bold;
+    font-size: 12px;
+    border-top: black 1px;
+    color: #47494c;
+}
