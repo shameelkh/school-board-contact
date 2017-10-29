@@ -26,9 +26,45 @@ class EditProfileForm extends React.Component {
         }
     }
 
+    handleStreetChange = (e) => {
+        this.setState({
+            street: e.target.value
+        })
+    }
+
+    handleCityChange = (e) => {
+        this.setState({
+            city: e.target.value
+        })
+    }
+
+    handlePostalCodeChange = (e) => {
+        this.setState({
+            postalCode: e.target.value
+        })
+    }
+
     handlePhoneNumberChange = (e) => {
         this.setState({
             phoneNumber: e.target.value
+        })
+    }
+
+    handleWebsiteChange = (e) => {
+        this.setState({
+            website: e.target.value
+        })
+    }
+
+    handleOpenTimeChange = (e) => {
+        this.setState({
+            openTime: e.target.value
+        })
+    }
+
+    handleCloseTimeChange = (e) => {
+        this.setState({
+            closeTime: e.target.value
         })
     }
 
@@ -43,8 +79,16 @@ class EditProfileForm extends React.Component {
             <form>
                 <div className="group-section">
                     <div class="field-section">
-                        <input type="text" value={board.address.street + ', ' + board.address.city + ', ' + board.address.postalCode} />
-                        <div><span class="field-name">Address</span></div>
+                        <input type="text" value={this.state.street} onChange={this.handleStreetChange}/>
+                        <div><span class="field-name">Street</span></div>
+                    </div>
+                    <div class="field-section">
+                        <input type="text" value={this.state.city} onChange={this.handleCityChange} />
+                        <div><span class="field-name">City</span></div>
+                    </div>
+                    <div class="field-section">
+                        <input type="text" value={this.state.postalCode} onChange={this.handlePostalCodeChange} />
+                        <div><span class="field-name">Postal Code</span></div>
                     </div>
                 </div>
 
@@ -57,18 +101,18 @@ class EditProfileForm extends React.Component {
                         <div><span class="field-name">Phone</span></div>
                     </div>
                     <div class="field-section">
-                        <input type="text" class="field-content" value={board.website} />
+                        <input type="text" class="field-content" value={this.state.website} onChange={this.handleWebsiteChange} />
                         <div><span class="field-name">Website</span></div>
                     </div>
                 </div>
 
                 <div className="group-section">
                      <div class="field-section">
-                        <input type="text" class="field-content" value={board.openTime} />
+                        <input type="text" class="field-content" value={this.state.openTime} onChange={this.handleOpenTimeChange} />
                         <div><span class="field-name">Open Time</span></div>
                      </div>
                      <div class="field-section">
-                        <input type="text" class="field-content" value={board.closeTime} />
+                        <input type="text" class="field-content" value={this.state.closeTime} onChange={this.handleCloseTimeChange}/>
                         <div><span class="field-name">Close Time</span></div>
                      </div>
                 </div>
