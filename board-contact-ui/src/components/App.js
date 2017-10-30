@@ -9,7 +9,6 @@ import ContactsPage from '../containers/ContactsPage'
 import Header from './Header'
 import Navigation from './Navigation'
 import ProfilePage from '../components/ProfilePage'
-import EditProfileForm from '../components/EditProfileForm'
 import AccountMgmtPage from '../components/AccountMgmtPage'
 
 
@@ -34,12 +33,6 @@ class App extends Component {
     renderProfilePage = () => {
         return (
             <ProfilePage board={this.props.boardInfo.board} />
-        )
-    }
-
-    renderEditProfileForm = () => {
-        return (
-            <EditProfileForm board={this.props.boardInfo.board} />
         )
     }
 
@@ -68,7 +61,6 @@ class App extends Component {
                         <div class="main-content">
                             <Switch>
                                 <Route exact path={`${match.path}profile`} render={this.renderProfilePage} />
-                                <Route path={`${match.path}profile/edit`} render={this.renderEditProfileForm} />
                                 <Route path={`${match.path}account-mgmt`} render={this.renderAccountMgmtPage} />
                                 <Route path={`${match.path}contacts`} component={ContactsPage} />
                             </Switch>
