@@ -73,7 +73,9 @@ class ProfilePage extends React.Component {
             )
         }
         else {
-            return ( <EditProfileForm board={this.props.boardInfo.board} /> )
+            return ( <EditProfileForm board={this.props.boardInfo.board}
+                                      disableEditMode={this.disableEditMode}
+                                      saveBoard={this.props.handleSaveBoard} /> )
         }
     }
 }
@@ -98,4 +100,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-export default connect(mapStateToProps, null)(ProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

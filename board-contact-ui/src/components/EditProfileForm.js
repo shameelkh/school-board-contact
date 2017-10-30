@@ -46,6 +46,11 @@ class EditProfileForm extends React.Component {
         return hasErrors && isTouched
     }
 
+    isSubmitEnabled = () => {
+        let enableSubmit = true;
+        return enableSubmit
+    }
+
     handleStreetChange = (e) => {
         this.setState({
             street: e.target.value
@@ -165,6 +170,31 @@ class EditProfileForm extends React.Component {
         }
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        if(!this.isSubmitEnabled()) {
+            return;
+        }
+
+        let boardSubSection = {
+            address: {
+                street: this.state.street,
+                city: this.state.city,
+                postalCode: this.state.postalCode
+            },
+            phoneNumber: this.state.phoneNumber,
+            website: this.state.website,
+            openTime: this.state.openTime,
+            closeTime: this.state.closeTime
+        }
+
+        let updatedBoard = Object.assign({}, this.props.board, boardSubSection)
+
+        this.props.saveBoard(updatedBoard)
+        this.props.disableEditMode()
+    }
+
     render() {
         let board = this.props.board
 
@@ -173,7 +203,7 @@ class EditProfileForm extends React.Component {
         }
 
         return (
-            <form className="col-md-10">
+            <form onSubmit={this.handleSubmit} className="col-md-10">
                 <div className="row group-section">
                     <div class="col-md-4">
                         <input type="text"
@@ -248,8 +278,12 @@ class EditProfileForm extends React.Component {
 
                 <div className="row group-section">
                     <div className="col-md-4">
-                        <button className="btn btn-danger btn-margin">Cancel</button>
-                        <button className="btn btn-success">Save</button>
+                        <input  type="button" className="btn btn-danger btn-margin"
+                                value="Cancel"
+                                onClick={this.props.disableEditMode} />
+                        <button type="submit"
+                                className="btn btn-success"
+                                disabled={!this.isSubmitEnabled()}>Save</button>
                     </div>
                     <div className="col-md-8"></div>
                 </div>
