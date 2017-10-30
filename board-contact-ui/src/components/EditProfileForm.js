@@ -173,9 +173,9 @@ class EditProfileForm extends React.Component {
         }
 
         return (
-            <form>
-                <div className="group-section">
-                    <div class="field-section">
+            <form className="col-md-10">
+                <div className="row group-section">
+                    <div class="col-md-4">
                         <input type="text"
                                value={this.state.street}
                                className={"field-content " + (this.isInvalid('street') ? 'input-error' : '')}
@@ -184,7 +184,7 @@ class EditProfileForm extends React.Component {
                         <div><span class="field-name">Street</span></div>
                         <div><span class="error-msg">{this.isInvalid('street') ? this.state.errors.street : ''}</span></div>
                     </div>
-                    <div class="field-section">
+                    <div class="col-md-4">
                         <input type="text"
                                value={this.state.city}
                                className={"field-content " + (this.isInvalid('city') ? 'input-error' : '')}
@@ -193,7 +193,7 @@ class EditProfileForm extends React.Component {
                         <div><span class="field-name">City</span></div>
                         <div><span class="error-msg">{this.isInvalid('city') ? this.state.errors.city : ''}</span></div>
                     </div>
-                    <div class="field-section">
+                    <div class="col-md-4">
                         <input type="text"
                                className={"field-content " + (this.isInvalid('postalCode') ? 'input-error' : '')}
                                value={this.state.postalCode}
@@ -204,8 +204,8 @@ class EditProfileForm extends React.Component {
                     </div>
                 </div>
 
-                <div className="group-section">
-                    <div class="field-section">
+                <div className="row group-section">
+                    <div class="col-md-4">
                         <input type="number"
                                 className={"field-content " + (this.isInvalid('phoneNumber') ? 'input-error' : '')}
                                 value={this.state.phoneNumber}
@@ -214,7 +214,7 @@ class EditProfileForm extends React.Component {
                         <div><span class="field-name">Phone</span></div>
                         <div><span class="error-msg">{this.isInvalid('phoneNumber') ? this.state.errors.phoneNumber : ''}</span></div>
                     </div>
-                    <div class="field-section">
+                    <div class="col-md-4">
                         <input type="text" class="field-content"
                                 className={"field-content " + (this.isInvalid('website') ? 'input-error' : '')}
                                 value={this.state.website}
@@ -225,8 +225,8 @@ class EditProfileForm extends React.Component {
                     </div>
                 </div>
 
-                <div className="group-section">
-                     <div class="field-section">
+                <div className="row group-section">
+                     <div class="col-md-4">
                         <input type="text" class="field-content"
                                className={"field-content " + (this.isInvalid('openTime') ? 'input-error' : '')}
                                value={this.state.openTime}
@@ -235,7 +235,7 @@ class EditProfileForm extends React.Component {
                         <div><span class="field-name">Open Time</span></div>
                         <div><span class="error-msg">{this.isInvalid('openTime') ? this.state.errors.openTime : ''}</span></div>
                      </div>
-                     <div class="field-section">
+                     <div class="col-md-4">
                         <input type="text" class="field-content"
                                className={"field-content " + (this.isInvalid('closeTime') ? 'input-error' : '')}
                                value={this.state.closeTime}
@@ -244,6 +244,14 @@ class EditProfileForm extends React.Component {
                         <div><span class="field-name">Close Time</span></div>
                         <div><span class="error-msg">{this.isInvalid('closeTime') ? this.state.errors.closeTime : ''}</span></div>
                      </div>
+                </div>
+
+                <div className="row group-section">
+                    <div className="col-md-4">
+                        <button className="btn btn-danger btn-margin">Cancel</button>
+                        <button className="btn btn-success">Save</button>
+                    </div>
+                    <div className="col-md-8"></div>
                 </div>
             </form>
         )
