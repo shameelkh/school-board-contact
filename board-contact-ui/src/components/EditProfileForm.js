@@ -15,6 +15,7 @@ class EditProfileForm extends React.Component {
     }
 
     updateStateWithBoard = (board) => {
+        //TODO: verify this.state can be used outside of constructor
         this.state = {
             street: board.address.street,
             city: board.address.city,
@@ -22,50 +23,146 @@ class EditProfileForm extends React.Component {
             phoneNumber: board.phoneNumber,
             website: board.website,
             openTime: board.openTime,
-            closeTime: board.closeTime
+            closeTime: board.closeTime,
+            errors: {},
+            touched: {}
         }
+    }
+
+    handleBlur = (fieldName) => (e) => {
+        console.log('onBlur')
+
+        this.setState({
+          touched: { ...this.state.touched, [fieldName]: true },
+        });
+
+        console.log(this.state.touched)
+    }
+
+    isInvalid = (fieldName) => {
+        const hasErrors = this.state.errors[fieldName]
+        const isTouched = this.state.touched[fieldName]
+
+        return hasErrors && isTouched
     }
 
     handleStreetChange = (e) => {
         this.setState({
             street: e.target.value
         })
+
+        if (e.target.value.length == 0) {
+             this.setState({
+                errors: { ...this.state.errors, ['street']: 'Required field' }
+             })
+        }
+        else {
+             this.setState({
+                errors: { ...this.state.errors, ['street']: undefined}
+             })
+        }
     }
 
     handleCityChange = (e) => {
         this.setState({
             city: e.target.value
         })
+
+        if (e.target.value.length == 0) {
+             this.setState({
+                errors: { ...this.state.errors, ['city']: 'Required field' }
+             })
+        }
+        else {
+             this.setState({
+                errors: { ...this.state.errors, ['city']: undefined}
+             })
+        }
     }
 
     handlePostalCodeChange = (e) => {
         this.setState({
             postalCode: e.target.value
         })
+
+        if (!/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/.test(e.target.value)) {
+            this.setState({
+                errors: { ...this.state.errors, ['postalCode']: 'Not a valid postal code' }
+            })
+        }
+        else {
+            this.setState({
+                errors: { ...this.state.errors, ['postalCode']: undefined }
+            })
+        }
     }
 
     handlePhoneNumberChange = (e) => {
         this.setState({
             phoneNumber: e.target.value
         })
+
+        if (!/[0-9]{10}/.test(e.target.value)) {
+            this.setState({
+                errors: { ...this.state.errors, ['phoneNumber']: 'Not a valid phone number' }
+            })
+        }
+        else {
+            this.setState({
+                errors: { ...this.state.errors, ['phoneNumber']: undefined }
+            })
+        }
     }
 
     handleWebsiteChange = (e) => {
         this.setState({
             website: e.target.value
         })
+
+        if (!/(www\.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}/.test(e.target.value)) {
+            this.setState({
+                errors: { ...this.state.errors, ['website']: 'Not a valid website' }
+            })
+        }
+        else {
+            this.setState({
+                errors: { ...this.state.errors, ['website']: undefined }
+            })
+        }
     }
 
     handleOpenTimeChange = (e) => {
         this.setState({
             openTime: e.target.value
         })
+
+        if (!/^[0-9]{2}:[0-9]{2}$/.test(e.target.value)) {
+            this.setState({
+                errors: { ...this.state.errors, ['openTime']: 'Not a open time' }
+            })
+        }
+        else {
+            this.setState({
+                errors: { ...this.state.errors, ['openTime']: undefined }
+            })
+        }
     }
 
     handleCloseTimeChange = (e) => {
         this.setState({
             closeTime: e.target.value
         })
+
+        if (!/^[0-9]{2}:[0-9]{2}$/.test(e.target.value)) {
+            this.setState({
+                errors: { ...this.state.errors, ['closeTime']: 'Not a close time' }
+            })
+        }
+        else {
+            this.setState({
+                errors: { ...this.state.errors, ['closeTime']: undefined }
+            })
+        }
     }
 
     render() {
@@ -79,41 +176,73 @@ class EditProfileForm extends React.Component {
             <form>
                 <div className="group-section">
                     <div class="field-section">
-                        <input type="text" value={this.state.street} onChange={this.handleStreetChange}/>
+                        <input type="text"
+                               value={this.state.street}
+                               className={"field-content " + (this.isInvalid('street') ? 'input-error' : '')}
+                               onChange={this.handleStreetChange}
+                               onBlur={this.handleBlur('street')}/>
                         <div><span class="field-name">Street</span></div>
+                        <div><span class="error-msg">{this.isInvalid('street') ? this.state.errors.street : ''}</span></div>
                     </div>
-                    <div class="field-section">
-                        <input type="text" value={this.state.city} onChange={this.handleCityChange} />
-                        <div><span class="field-name">City</span></div>
-                    </div>
-                    <div class="field-section">
-                        <input type="text" value={this.state.postalCode} onChange={this.handlePostalCodeChange} />
-                        <div><span class="field-name">Postal Code</span></div>
-                    </div>
-                </div>
-
-                <div className="group-section">
                     <div class="field-section">
                         <input type="text"
-                                class="field-content"
-                                value={this.state.phoneNumber}
-                                onChange={this.handlePhoneNumberChange}/>
-                        <div><span class="field-name">Phone</span></div>
+                               value={this.state.city}
+                               className={"field-content " + (this.isInvalid('city') ? 'input-error' : '')}
+                               onChange={this.handleCityChange}
+                               onBlur={this.handleBlur('city')} />
+                        <div><span class="field-name">City</span></div>
+                        <div><span class="error-msg">{this.isInvalid('city') ? this.state.errors.city : ''}</span></div>
                     </div>
                     <div class="field-section">
-                        <input type="text" class="field-content" value={this.state.website} onChange={this.handleWebsiteChange} />
+                        <input type="text"
+                               className={"field-content " + (this.isInvalid('postalCode') ? 'input-error' : '')}
+                               value={this.state.postalCode}
+                               onChange={this.handlePostalCodeChange}
+                               onBlur={this.handleBlur('postalCode')}/>
+                        <div><span class="field-name">Postal Code</span></div>
+                        <div><span className="error-msg">{this.isInvalid('postalCode') ? this.state.errors.postalCode : ''}</span></div>
+                    </div>
+                </div>
+
+                <div className="group-section">
+                    <div class="field-section">
+                        <input type="number"
+                                className={"field-content " + (this.isInvalid('phoneNumber') ? 'input-error' : '')}
+                                value={this.state.phoneNumber}
+                                onChange={this.handlePhoneNumberChange}
+                                onBlur={this.handleBlur('phoneNumber')}/>
+                        <div><span class="field-name">Phone</span></div>
+                        <div><span class="error-msg">{this.isInvalid('phoneNumber') ? this.state.errors.phoneNumber : ''}</span></div>
+                    </div>
+                    <div class="field-section">
+                        <input type="text" class="field-content"
+                                className={"field-content " + (this.isInvalid('website') ? 'input-error' : '')}
+                                value={this.state.website}
+                                onChange={this.handleWebsiteChange}
+                                onBlur={this.handleBlur('website')}/>
                         <div><span class="field-name">Website</span></div>
+                        <div><span class="error-msg">{this.isInvalid('website') ? this.state.errors.website : ''}</span></div>
                     </div>
                 </div>
 
                 <div className="group-section">
                      <div class="field-section">
-                        <input type="text" class="field-content" value={this.state.openTime} onChange={this.handleOpenTimeChange} />
+                        <input type="text" class="field-content"
+                               className={"field-content " + (this.isInvalid('openTime') ? 'input-error' : '')}
+                               value={this.state.openTime}
+                               onChange={this.handleOpenTimeChange}
+                               onBlur={this.handleBlur('openTime')}/>
                         <div><span class="field-name">Open Time</span></div>
+                        <div><span class="error-msg">{this.isInvalid('openTime') ? this.state.errors.openTime : ''}</span></div>
                      </div>
                      <div class="field-section">
-                        <input type="text" class="field-content" value={this.state.closeTime} onChange={this.handleCloseTimeChange}/>
+                        <input type="text" class="field-content"
+                               className={"field-content " + (this.isInvalid('closeTime') ? 'input-error' : '')}
+                               value={this.state.closeTime}
+                               onChange={this.handleCloseTimeChange}
+                               onBlur={this.handleBlur('closeTime')} />
                         <div><span class="field-name">Close Time</span></div>
+                        <div><span class="error-msg">{this.isInvalid('closeTime') ? this.state.errors.closeTime : ''}</span></div>
                      </div>
                 </div>
             </form>

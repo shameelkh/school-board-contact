@@ -53,3 +53,11 @@ body {
     border-top: black 1px;
     color: #47494c;
 }
+
+.input-error {
+    border: solid 1px red;
+}
+
+.error-msg {
+    color: red;
+}
