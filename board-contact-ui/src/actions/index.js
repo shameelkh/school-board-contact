@@ -6,6 +6,8 @@ export const REQUEST_BOARD = 'REQUEST_BOARD'
 export const RECEIVE_BOARD = 'RECEIVE_BOARD'
 export const FETCH_BOARD = 'FETCH_BOARD'
 
+export const SAVE_BOARD = 'SAVE BOARD'
+
 export const REQUEST_CONTACTS = 'REQUEST_CONTACTS'
 export const RECEIVE_CONTACTS = 'RECEIVE_CONTACTS'
 export const FETCH_CONTACTS = 'FETCH_CONTACTS'
@@ -62,5 +64,12 @@ export const fetchContacts = (boardId) => {
         fetch('http://localhost:8080/contacts/' + boardId)
                     .then(response => response.json())
                     .then(contacts => dispatch( receiveContacts(contacts) ))
+    }
+}
+
+export const saveBoard = (updatedBoard) => {
+    return (dispatch) => {
+        console.log("saving: " + updatedBoard)
+        dispatch( receiveBoard(updatedBoard) )
     }
 }
