@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { fetchBoard }  from '../actions'
-import BoardInfoPage from '../containers/BoardInfoPage'
 import ContactsPage from '../containers/ContactsPage'
 import Header from './Header'
 import Navigation from './Navigation'
