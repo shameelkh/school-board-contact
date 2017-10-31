@@ -7,8 +7,8 @@ import { fetchBoard }  from '../actions'
 import ContactsPage from '../containers/ContactsPage'
 import Header from './Header'
 import Navigation from './Navigation'
-import ProfilePage from '../components/ProfilePage'
-import AccountMgmtPage from '../components/AccountMgmtPage'
+import ProfilePage from '../containers/ProfilePage'
+import AccountMgmtPage from '../containers/AccountMgmtPage'
 
 
 class App extends Component {
