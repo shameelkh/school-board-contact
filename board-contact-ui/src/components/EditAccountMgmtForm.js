@@ -47,6 +47,11 @@ class EditAccountMgmtForm extends React.Component {
                 errors: { ...this.state.errors, ['accountOwner']: 'Required field' }
              })
         }
+        else {
+            this.setState({
+                errors: { ...this.state.errors, ['accountOwner']: undefined }
+            })
+        }
     }
 
     handleOpenDateChange = (e) => {
@@ -59,6 +64,11 @@ class EditAccountMgmtForm extends React.Component {
                 errors: { ...this.state.errors, ['openDate']: 'Required field' }
              })
         }
+        else {
+            this.setState({
+                errors: { ...this.state.errors, ['openDate']: undefined }
+            })
+        }
     }
 
     handleCloseDateChange = (e) => {
@@ -70,6 +80,11 @@ class EditAccountMgmtForm extends React.Component {
              this.setState({
                 errors: { ...this.state.errors, ['closeDate']: 'Required field' }
              })
+        }
+        else {
+            this.setState({
+                errors: { ...this.state.errors, ['closeDate']: undefined }
+            })
         }
     }
 
