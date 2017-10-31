@@ -36,10 +36,22 @@ body {
     margin-bottom: 20px;
 }
 
+.group-section-contact {
+    margin-bottom: 0px;
+}
+
+
 .field-section {
     display: inline-block;
     margin-right: 100px;
     margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.field-section-contact {
+    display: inline-block;
+    margin-right: 100px;
+    margin-bottom: 15px;
     font-size: 15px;
 }
 
@@ -52,6 +64,10 @@ body {
     font-size: 12px;
     border-top: black 1px;
     color: #47494c;
+}
+
+.contact-section {
+    margin-bottom: 25px;
 }
 
 .input-error {
