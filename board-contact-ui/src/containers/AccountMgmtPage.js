@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { saveBoard } from '../actions'
+import EditAccountMgmtForm from '../components/EditAccountMgmtForm'
 
 class AccountMgmtPage extends React.Component {
 
@@ -57,7 +59,11 @@ class AccountMgmtPage extends React.Component {
                     </div>
                 }
 
-                {this.state.inEditMode}
+                {this.state.inEditMode &&
+                    <EditAccountMgmtForm board={this.props.boardInfo.board}
+                                         disableEditMode={this.disableEditMode}
+                                         saveBoard={this.props.handleSaveBoard} />
+                }
             </div>
         )
     }
@@ -69,5 +75,12 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleSaveBoard: (updatedBoard) => {
+            dispatch( saveBoard(updatedBoard) )
+        }
+    }
+}
 
-export default connect(mapStateToProps, null)(AccountMgmtPage)
+export default connect(mapStateToProps, mapDispatchToProps)(AccountMgmtPage)
