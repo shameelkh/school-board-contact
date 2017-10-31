@@ -30,12 +30,6 @@ class App extends Component {
         }
     }
 
-    renderProfilePage = () => {
-        return (
-            <ProfilePage board={this.props.boardInfo.board} />
-        )
-    }
-
     renderAccountMgmtPage = () => {
         return (
             <AccountMgmtPage board={this.props.boardInfo.board} />
@@ -60,7 +54,7 @@ class App extends Component {
                         </div>
                         <div class="main-content">
                             <Switch>
-                                <Route exact path={`${match.path}profile`} render={this.renderProfilePage} />
+                                <Route exact path={`${match.path}profile`} component={ProfilePage} />
                                 <Route path={`${match.path}account-mgmt`} render={this.renderAccountMgmtPage} />
                                 <Route path={`${match.path}contacts`} component={ContactsPage} />
                             </Switch>
