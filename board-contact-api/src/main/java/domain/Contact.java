@@ -16,5 +16,5 @@ public class Contact {
     private String title;
     private Address address;
     private String phoneNumber;
-    private boolean isPrimary;
+    private boolean primary;
 }

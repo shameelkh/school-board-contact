@@ -14,7 +14,7 @@ class EditContactForm extends React.Component {
             title: contact.title,
             email: contact.email,
             phoneNumber: contact.phoneNumber,
-            isPrimary: contact.isPrimary,
+            primary: contact.primary,
             errors: {},
             touched: {}
         }
@@ -144,10 +144,32 @@ class EditContactForm extends React.Component {
         }
     }
 
-    handleIsPrimaryChange = (e) => {
+    handlePrimaryChange = (e) => {
         this.setState({
-            isPrimary: e.target.value === 'true' ? true : false
+            primary: e.target.value === 'true' ? true : false
         })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        if(!this.isSubmitEnabled()) {
+            return;
+        }
+
+        let updatedContact = {
+            id: this.props.contact.id,
+            salutation: this.state.salutation,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            title: this.state.title,
+            email: this.state.email,
+            phoneNumber: this.state.phoneNumber,
+            primary: this.state.primary
+        }
+
+        this.props.saveContact(updatedContact)
+        this.props.cancelEditMode()
     }
 
     render() {
@@ -214,16 +236,16 @@ class EditContactForm extends React.Component {
                         <div><span class="error-msg">{this.isInvalid('phoneNumber') ? this.state.errors.phoneNumber : ''}</span></div>
                     </div>
                     <div class="col-md-4">
-                        <select value={(this.state.isPrimary ? 'true' : 'false')}
-                                className={"field-content " + (this.isInvalid('isPrimary') ? 'input-error' : '')}
-                                onChange={this.handleIsPrimaryChange}
-                                onBlur={this.handleBlur('isPrimary')} >
+                        <select value={(this.state.primary ? 'true' : 'false')}
+                                className={"field-content " + (this.isInvalid('primary') ? 'input-error' : '')}
+                                onChange={this.handlePrimaryChange}
+                                onBlur={this.handleBlur('primary')} >
 
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
                         <div><span class="field-name">Primary</span></div>
-                        <div><span class="error-msg">{this.isInvalid('isPrimary') ? this.state.errors.isPrimary : ''}</span></div>
+                        <div><span class="error-msg">{this.isInvalid('primary') ? this.state.errors.primary : ''}</span></div>
                     </div>
                     <div className="col-md-4"></div>
                 </div>

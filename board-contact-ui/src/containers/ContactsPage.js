@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchContacts } from '../actions'
+import { fetchContacts, saveContact } from '../actions'
 import Contact from '../components/Contact'
 import EditContactForm from '../components/EditContactForm'
 
@@ -58,7 +58,8 @@ class ContactsPage extends Component {
 
                     {this.state.inEditMode[contact.id] &&
                         <EditContactForm contact={contact}
-                                         cancelEditMode={this.cancelEditMode} />
+                                         cancelEditMode={this.cancelEditMode}
+                                         saveContact={this.props.handleSaveContact}/>
                     }
                     </div>
 
@@ -77,8 +78,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        handleSaveContact: (updatedContact) => {
+            dispatch( saveContact(updatedContact) )
+        }
     }
 }
+
 
 ContactsPage.propTypes = {
     contactInfo: PropTypes.object.isRequired

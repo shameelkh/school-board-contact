@@ -6,11 +6,14 @@ export const REQUEST_BOARD = 'REQUEST_BOARD'
 export const RECEIVE_BOARD = 'RECEIVE_BOARD'
 export const FETCH_BOARD = 'FETCH_BOARD'
 
-export const SAVE_BOARD = 'SAVE BOARD'
+export const SAVE_BOARD = 'SAVE_BOARD'
 
 export const REQUEST_CONTACTS = 'REQUEST_CONTACTS'
 export const RECEIVE_CONTACTS = 'RECEIVE_CONTACTS'
+export const RECEIVE_SINGLE_CONTACT = 'RECEIVE_SINGLE_CONTACT'
 export const FETCH_CONTACTS = 'FETCH_CONTACTS'
+
+export const SAVE_CONTACT = 'SAVE_CONTACT'
 
 export const updateSelectedBoardId = (selectedBoardId) => {
     return {
@@ -57,6 +60,13 @@ export const receiveContacts = (contacts) => {
     }
 }
 
+export const receiveContact = (contact) => {
+    return {
+        type: RECEIVE_SINGLE_CONTACT,
+        contact
+    }
+}
+
 export const fetchContacts = (boardId) => {
     return (dispatch) => {
         dispatch( requestContacts(boardId) )
@@ -71,5 +81,12 @@ export const saveBoard = (updatedBoard) => {
     return (dispatch) => {
         console.log("saving: " + updatedBoard)
         dispatch( receiveBoard(updatedBoard) )
+    }
+}
+
+export const saveContact = (updatedContact) => {
+    return (dispatch) => {
+        console.log("saving: " + updatedContact.firstName)
+        dispatch( receiveContact(updatedContact) )
     }
 }

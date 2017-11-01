@@ -19,6 +19,8 @@ class Contact extends React.Component {
     render() {
         let contact = this.props.contact
 
+        console.log("rendering contact => " + contact.id)
+
         return (
             <div>
                 {this.props.isExpanded &&
@@ -45,7 +47,7 @@ class Contact extends React.Component {
                                 <div><span class="field-name">Phone</span></div>
                             </div>
                             <div class="field-section-contact">
-                                <span class="field-content">{contact.isPrimary ? 'Yes' : 'No'}</span>
+                                <span class="field-content">{contact.primary ? 'Yes' : 'No'}</span>
                                 <div><span class="field-name">Primary</span></div>
                             </div>
                         </div>
