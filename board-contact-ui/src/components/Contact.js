@@ -20,9 +20,9 @@ class Contact extends React.Component {
         let contact = this.props.contact
         return (
             <div>
-                {this.state.isExpanded &&
+                {this.props.isExpanded &&
                     <div className="contact-section">
-                        <div className="group-section-contact" onClick={this.handleClick}>
+                        <div className="group-section-contact" onClick={() => {this.props.handleExpand(contact.id, this.props.isExpanded)}}>
                             <div class="field-section-contact">
                                 <span class="field-content">{contact.salutation + ' ' + contact.firstName + ' ' + contact.lastName}</span>
                                 <div><span class="field-name">Name</span></div>
@@ -51,9 +51,9 @@ class Contact extends React.Component {
                     </div>
                 }
 
-                {!this.state.isExpanded &&
+                {!this.props.isExpanded &&
                     <div className="contact-section">
-                        <div className="group-section-contact" onClick={this.handleClick}>
+                        <div className="group-section-contact" onClick={() => {this.props.handleExpand(contact.id, this.props.isExpanded)}}>
                             <div class="field-section-contact">
                                 <span class="field-content">{contact.salutation + ' ' + contact.firstName + ' ' + contact.lastName}</span>
                                 <div><span class="field-name">Name</span></div>

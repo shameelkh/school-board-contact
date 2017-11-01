@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { fetchBoard }  from '../actions'
+import { fetchBoard, fetchContacts }  from '../actions'
 import ContactsPage from '../containers/ContactsPage'
 import Header from './Header'
 import Navigation from './Navigation'
@@ -21,11 +21,13 @@ class App extends Component {
 
     componentWillMount() {
         this.props.loadBoardData(this.props.selectedBoardId)
+        this.props.loadContacts(this.props.selectedBoardId)
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.selectedBoardId !== this.props.selectedBoardId) {
             this.props.loadBoardData(nextProps.selectedBoardId)
+            this.props.loadContacts(nextProps.selectedBoardId)
         }
     }
 
@@ -77,6 +79,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loadBoardData: (selectedBoardId) => {
             dispatch( fetchBoard(selectedBoardId) )
+        },
+
+        loadContacts: (selectedBoardId) => {
+            dispatch( fetchContacts(selectedBoardId) )
         }
     }
 }
