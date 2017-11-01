@@ -13,7 +13,7 @@ class EditContactForm extends React.Component {
             lastName: contact.lastName,
             title: contact.title,
             email: contact.email,
-            phone: contact.phone,
+            phoneNumber: contact.phoneNumber,
             isPrimary: contact.isPrimary,
             errors: {},
             touched: {}
@@ -214,8 +214,7 @@ class EditContactForm extends React.Component {
                         <div><span class="error-msg">{this.isInvalid('phoneNumber') ? this.state.errors.phoneNumber : ''}</span></div>
                     </div>
                     <div class="col-md-4">
-                        <select type="text"
-                                value={this.state.isPrimary ? 'Yes' : 'No'}
+                        <select value={(this.state.isPrimary ? 'true' : 'false')}
                                 className={"field-content " + (this.isInvalid('isPrimary') ? 'input-error' : '')}
                                 onChange={this.handleIsPrimaryChange}
                                 onBlur={this.handleBlur('isPrimary')} >
