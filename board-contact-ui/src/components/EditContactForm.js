@@ -228,6 +228,17 @@ class EditContactForm extends React.Component {
                     </div>
                     <div className="col-md-4"></div>
                 </div>
+                <div className="row group-section">
+                    <div className="col-md-4">
+                        <input  type="button" className="btn btn-danger btn-margin"
+                                value="Cancel"
+                                onClick={() => {this.props.cancelEditMode(this.props.contact.id)} } />
+                        <button type="submit"
+                                className="btn btn-success"
+                                disabled={!this.isSubmitEnabled()}>Save</button>
+                    </div>
+                    <div className="col-md-8"></div>
+                </div>
             </form>
         )
     }

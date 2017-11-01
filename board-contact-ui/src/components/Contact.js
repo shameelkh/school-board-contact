@@ -18,6 +18,7 @@ class Contact extends React.Component {
 
     render() {
         let contact = this.props.contact
+
         return (
             <div>
                 {this.props.isExpanded &&
@@ -48,6 +49,9 @@ class Contact extends React.Component {
                                 <div><span class="field-name">Primary</span></div>
                             </div>
                         </div>
+
+                        <button className="btn btn-success"
+                                onClick={() => {this.props.enableEditMode(contact.id)}}>Edit</button>
                     </div>
                 }
 

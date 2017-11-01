@@ -3,13 +3,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchContacts } from '../actions'
 import Contact from '../components/Contact'
+import EditContactForm from '../components/EditContactForm'
 
 class ContactsPage extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            isExpandedList: {}
+            isExpanded: {},
+            inEditMode: {},
         }
     }
 
@@ -17,10 +19,22 @@ class ContactsPage extends Component {
     }
 
     handleExpand = (contactId, isExpanded) => {
-        //isExpandedList: Object.assign({}, this.state.isExpandedList, {[contactId]: !isExpanded})
+        //isExpanded: Object.assign({}, this.state.isExpanded, {[contactId]: !isExpanded})
 
         this.setState({
-           isExpandedList: {[contactId] : !isExpanded}
+           isExpanded: {[contactId] : !isExpanded}
+        })
+    }
+
+    enableEditMode = (contactId) => {
+        this.setState({
+            inEditMode: {[contactId] : true}
+        })
+    }
+
+    cancelEditMode = () => {
+        this.setState({
+            inEditMode: {}
         })
     }
 
@@ -34,9 +48,21 @@ class ContactsPage extends Component {
         return (
             <div>
                 {contacts.map(contact => (
-                    <Contact contact={contact}
-                             isExpanded={this.state.isExpandedList[contact.id]}
-                             handleExpand={this.handleExpand}/>
+                    <div>
+                    {!this.state.inEditMode[contact.id] &&
+                        <Contact contact={contact}
+                                 enableEditMode={this.enableEditMode}
+                                 isExpanded={this.state.isExpanded[contact.id]}
+                                 handleExpand={this.handleExpand}/>
+                    }
+
+                    {this.state.inEditMode[contact.id] &&
+                        <EditContactForm contact={contact}
+                                         cancelEditMode={this.cancelEditMode} />
+                    }
+                    </div>
+
+
                 ))}
             </div>
         )

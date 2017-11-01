@@ -293,7 +293,9 @@ class EditProfileForm extends React.Component {
 }
 
 EditProfileForm.propTypes = {
-    board: PropTypes.object.isRequired
+    board: PropTypes.object.isRequired,
+    saveBoard: PropTypes.func.isRequired,
+    disableEditMode: PropTypes.func.isRequired
 }
 
 EditProfileForm.defaultProps = {
