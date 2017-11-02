@@ -79,8 +79,14 @@ export const fetchContacts = (boardId) => {
 
 export const saveBoard = (updatedBoard) => {
     return (dispatch) => {
-        console.log("saving: " + updatedBoard)
-        dispatch( receiveBoard(updatedBoard) )
+
+        fetch('http://localhost:8080/employer', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(updatedBoard)
+        })
+          .then(response => response.json())
+          .then(board => dispatch(receiveBoard(board)))
     }
 }
 
