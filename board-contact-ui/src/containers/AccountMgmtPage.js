@@ -50,7 +50,7 @@ class AccountMgmtPage extends React.Component {
                         </div>
                         <div className="group-section">
                             <div class="field-section">
-                                <span class="field-content">{board.isActive ? "Yes" : "No"}</span>
+                                <span class="field-content">{board.active ? "Yes" : "No"}</span>
                                 <div><span class="field-name">Active</span></div>
                             </div>
                         </div>

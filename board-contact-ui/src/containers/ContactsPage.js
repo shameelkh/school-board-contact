@@ -49,18 +49,18 @@ class ContactsPage extends Component {
             <div>
                 {contacts.map(contact => (
                     <div>
-                    {!this.state.inEditMode[contact.id] &&
-                        <Contact contact={contact}
-                                 enableEditMode={this.enableEditMode}
-                                 isExpanded={this.state.isExpanded[contact.id]}
-                                 handleExpand={this.handleExpand}/>
-                    }
+                        {!this.state.inEditMode[contact.id] &&
+                            <Contact contact={contact}
+                                     enableEditMode={this.enableEditMode}
+                                     isExpanded={this.state.isExpanded[contact.id]}
+                                     handleExpand={this.handleExpand}/>
+                        }
 
-                    {this.state.inEditMode[contact.id] &&
-                        <EditContactForm contact={contact}
-                                         cancelEditMode={this.cancelEditMode}
-                                         saveContact={this.props.handleSaveContact}/>
-                    }
+                        {this.state.inEditMode[contact.id] &&
+                            <EditContactForm contact={contact}
+                                             cancelEditMode={this.cancelEditMode}
+                                             saveContact={this.props.handleSaveContact}/>
+                        }
                     </div>
 
 

@@ -9,7 +9,7 @@ class EditAccountMgmtForm extends React.Component {
             accountOwner: props.board.accountOwner,
             openDate: props.board.openDate,
             closeDate: (props.board.closeDate ? props.board.closeDate : ''),
-            isActive: props.board.isActive,
+            active: props.board.active,
             errors: {},
             touched: {}
         }
@@ -88,9 +88,9 @@ class EditAccountMgmtForm extends React.Component {
         }
     }
 
-    handleIsActiveChange = (e) => {
+    handleActiveChange = (e) => {
         this.setState({
-            isActive: (e.target.value === 'true' ? true : false)
+            active: (e.target.value === 'true' ? true : false)
         })
     }
 
@@ -105,7 +105,7 @@ class EditAccountMgmtForm extends React.Component {
             accountOwner: this.state.accountOwner,
             openDate: this.state.openDate,
             closeDate: this.state.closeDate,
-            isActive: this.state.isActive
+            active: this.state.active
         }
 
         let updatedBoard = Object.assign({}, this.props.board, boardSubSection)
@@ -158,16 +158,16 @@ class EditAccountMgmtForm extends React.Component {
 
                 <div className="row group-section">
                      <div class="col-md-4">
-                        <select className={"field-content " + (this.isInvalid('isActive') ? 'input-error' : '')}
-                                value={this.state.isActive ? "true" : "false"}
-                                onChange={this.handleIsActiveChange}
-                                onBlur={this.handleBlur('isActive')}>
+                        <select className={"field-content " + (this.isInvalid('active') ? 'input-error' : '')}
+                                value={this.state.active ? "true" : "false"}
+                                onChange={this.handleActiveChange}
+                                onBlur={this.handleBlur('active')}>
 
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
                         <div><span class="field-name">Active</span></div>
-                        <div><span class="error-msg">{this.isInvalid('isActive') ? this.state.errors.isActive : ''}</span></div>
+                        <div><span class="error-msg">{this.isInvalid('active') ? this.state.errors.active : ''}</span></div>
                      </div>
                 </div>
 
@@ -192,7 +192,7 @@ EditAccountMgmtForm.defaultProps = {
     accountOwner: '',
     openDate: '',
     closeDate: '',
-    isActive: undefined
+    active: undefined
   }
 };
 

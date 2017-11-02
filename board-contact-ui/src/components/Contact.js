@@ -19,8 +19,6 @@ class Contact extends React.Component {
     render() {
         let contact = this.props.contact
 
-        console.log("rendering contact => " + contact.id)
-
         return (
             <div>
                 {this.props.isExpanded &&
