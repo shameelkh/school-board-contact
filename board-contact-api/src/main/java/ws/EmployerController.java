@@ -17,4 +17,13 @@ public class EmployerController {
 
         return new ResponseEntity(employer, HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @RequestMapping(path = "/employer", method = RequestMethod.POST)
+    public ResponseEntity saveEmployer(@RequestBody Employer employer) {
+
+        Application.employersMap.put(employer.getBoardNumber(), employer);
+
+        return new ResponseEntity(employer, HttpStatus.OK);
+    }
 }
