@@ -159,6 +159,7 @@ class EditContactForm extends React.Component {
 
         let updatedContact = {
             id: this.props.contact.id,
+            boardNumber: this.props.contact.boardNumber,
             salutation: this.state.salutation,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
