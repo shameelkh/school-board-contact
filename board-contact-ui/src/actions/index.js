@@ -14,6 +14,7 @@ export const RECEIVE_SINGLE_CONTACT = 'RECEIVE_SINGLE_CONTACT'
 export const FETCH_CONTACTS = 'FETCH_CONTACTS'
 
 export const SAVE_CONTACT = 'SAVE_CONTACT'
+export const ADD_CONTACT = 'ADD_CONTACT'
 
 export const updateSelectedBoardId = (selectedBoardId) => {
     return {
@@ -92,7 +93,6 @@ export const saveBoard = (updatedBoard) => {
 
 export const saveContact = (updatedContact) => {
     return (dispatch) => {
-        console.log("saving: " + updatedContact.firstName)
 
         fetch('http://localhost:8080/contact', {
             method: 'POST',
@@ -102,5 +102,19 @@ export const saveContact = (updatedContact) => {
             .then(response => response.json())
 
         dispatch( receiveContact(updatedContact) )
+    }
+}
+
+export const addContact = (newContact) => {
+    return (dispatch) => {
+
+        fetch('http://localhost:8080/add/contact', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(newContact)
+        })
+            .then(response => response.json())
+
+        dispatch( receiveContact(newContact) )
     }
 }
