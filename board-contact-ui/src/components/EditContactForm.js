@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class EditContactForm extends React.Component {
 
@@ -8,13 +9,13 @@ class EditContactForm extends React.Component {
         let contact = props.contact
 
         this.state = {
-            salutation: contact.salutation,
-            firstName: contact.firstName,
-            lastName: contact.lastName,
-            title: contact.title,
-            email: contact.email,
-            phoneNumber: contact.phoneNumber,
-            primary: contact.primary,
+            salutation: (contact.salutation ? contact.salutation : ''),
+            firstName: (contact.firstName ? contact.firstName : ''),
+            lastName: (contact.lastName ? contact.lastName : ''),
+            title: (contact.title ? contact.title : ''),
+            email: (contact.email ? contact.email : ''),
+            phoneNumber: (contact.phoneNumber ? contact.phoneNumber : ''),
+            primary: (contact.primary ? contact.phoneNumber : false),
             errors: {},
             touched: {}
         }
@@ -264,6 +265,16 @@ class EditContactForm extends React.Component {
             </form>
         )
     }
+}
+
+EditContactForm.propTypes = {
+    contact: PropTypes.object.isRequired,
+    saveContact: PropTypes.func.isRequired,
+    cancelEditMode: PropTypes.func.isRequired
+}
+
+EditContactForm.defaultProps = {
+    contact: {}
 }
 
 export default EditContactForm

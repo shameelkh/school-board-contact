@@ -36,6 +36,18 @@ public class ContactsController {
         return new ResponseEntity(updatedContact, HttpStatus.OK);
     }
 
+    @CrossOrigin
+    @RequestMapping(value = "/add/contact", method = RequestMethod.POST)
+    public ResponseEntity addContact(@RequestBody Contact newContact) {
+        int newContactId = Application.getNewId();
+        newContact.setId(newContactId);
+
+        List<Contact> listOfBoardContacts = Application.boardToContactsMap.get(newContact.getBoardNumber());
+        listOfBoardContacts.add(newContact);
+
+        return new ResponseEntity(newContact, HttpStatus.OK);
+    }
+
     private void copyUpdatedContact (Contact contact, Contact updatedContact) {
         contact.setBoardNumber(updatedContact.getBoardNumber());
         contact.setSalutation(updatedContact.getSalutation());

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchContacts, saveContact } from '../actions'
+import { fetchContacts, saveContact, addContact } from '../actions'
 import Contact from '../components/Contact'
 import EditContactForm from '../components/EditContactForm'
 
@@ -12,6 +12,7 @@ class ContactsPage extends Component {
         this.state = {
             isExpanded: {},
             inEditMode: {},
+            addingNewContact: false,
         }
     }
 
@@ -26,6 +27,10 @@ class ContactsPage extends Component {
         })
     }
 
+    handleAddButton = () => {
+        this.setState({ addingNewContact: true })
+    }
+
     enableEditMode = (contactId) => {
         this.setState({
             inEditMode: {[contactId] : true}
@@ -34,7 +39,8 @@ class ContactsPage extends Component {
 
     cancelEditMode = () => {
         this.setState({
-            inEditMode: {}
+            inEditMode: {},
+            addingNewContact: false
         })
     }
 
@@ -47,6 +53,19 @@ class ContactsPage extends Component {
 
         return (
             <div>
+                <div>
+                    {!this.state.addingNewContact &&
+                        <button className="btn btn-success add-contact-btn"
+                            onClick={this.handleAddButton}>Add</button>
+                    }
+                </div>
+                <div>
+                    {this.state.addingNewContact &&
+                        <EditContactForm contact={ {boardNumber: this.props.boardNumber} }
+                                         cancelEditMode={this.cancelEditMode}
+                                         saveContact={this.props.handleAddContact} />
+                    }
+                </div>
                 {contacts.map(contact => (
                     <div>
                         {!this.state.inEditMode[contact.id] &&
@@ -72,7 +91,8 @@ class ContactsPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        contactInfo: state.contactInfo
+        contactInfo: state.contactInfo,
+        boardNumber: (state.boardInfo.board ? state.boardInfo.board.boardNumber : 0)
     }
 }
 
@@ -80,13 +100,17 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleSaveContact: (updatedContact) => {
             dispatch( saveContact(updatedContact) )
+        },
+
+        handleAddContact: (newContact) => {
+            dispatch( addContact(newContact) )
         }
     }
 }
 
-
 ContactsPage.propTypes = {
-    contactInfo: PropTypes.object.isRequired
+    contactInfo: PropTypes.object.isRequired,
+    boardNumber: PropTypes.number.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsPage)
