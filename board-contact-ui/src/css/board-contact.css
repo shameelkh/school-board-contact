@@ -81,3 +81,30 @@ body {
 .btn-margin {
     margin-right: 10px;
 }
+
+.add-contact-btn {
+    padding: 3px;
+    margin-left:25%;
+}
+
+
+
+ul.nav a:hover {
+    color: white !important;
+    background-color: #6c706b !important;
+}
+
+ul.nav a:active {
+    color: white !important;
+    background-color: #6c706b !important;
+}
+
+ul.nav a:focus {
+    color: white !important;
+    background-color: #484c47 !important;
+}
+
+.active {
+    color: white;
+    background-color: #484c47;
+}
