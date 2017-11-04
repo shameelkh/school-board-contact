@@ -13,9 +13,23 @@ const receiveContactInfo = (contacts) => {
 }
 
 const receiveSingleContact = (contacts, receivedContact) => {
-    return contacts.map((contact) => {
-        return contact.id == receivedContact.id ? receivedContact : contact
+    let foundContact = false;
+
+    let newContactList = contacts.map((contact) => {
+        if (contact.id == receivedContact.id) {
+            foundContact = true
+            return receivedContact
+        }
+        else {
+            return contact
+        }
     })
+
+    if (!foundContact) {
+        newContactList.push(receivedContact)
+    }
+
+    return newContactList
 }
 
 const contactInfo = (state = defaultContactInfo, action) => {

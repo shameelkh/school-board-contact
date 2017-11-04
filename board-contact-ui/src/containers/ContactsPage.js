@@ -61,9 +61,16 @@ class ContactsPage extends Component {
                 </div>
                 <div>
                     {this.state.addingNewContact &&
+                        <div className="group-section-contact">
+                            <div class="field-section-contact">
+                                <span class="field-content">New Contact</span>
+                            </div>
+
                         <EditContactForm contact={ {boardNumber: this.props.boardNumber} }
                                          cancelEditMode={this.cancelEditMode}
                                          saveContact={this.props.handleAddContact} />
+                        </div>
+
                     }
                 </div>
                 {contacts.map(contact => (
