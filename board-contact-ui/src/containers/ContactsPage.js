@@ -20,7 +20,19 @@ class ContactsPage extends Component {
     }
 
     handleExpand = (contactId, isExpanded) => {
-        //isExpanded: Object.assign({}, this.state.isExpanded, {[contactId]: !isExpanded})
+        let contactInEditMode = false
+
+        // can not expand/collapse when a contact is in edit mode
+        Object.keys(this.state.inEditMode).forEach((key) => {
+            if(this.state.inEditMode[key]) {
+                contactInEditMode = true
+            }
+        })
+
+        if(contactInEditMode) {
+            alert("Please cancel edit mode for contact.")
+            return
+        }
 
         this.setState({
            isExpanded: {[contactId] : !isExpanded}
