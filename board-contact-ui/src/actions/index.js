@@ -16,6 +16,8 @@ export const FETCH_CONTACTS = 'FETCH_CONTACTS'
 export const SAVE_CONTACT = 'SAVE_CONTACT'
 export const ADD_CONTACT = 'ADD_CONTACT'
 
+const BASE_API = 'http://localhost:8080'
+
 export const updateSelectedBoardId = (selectedBoardId) => {
     return {
         type: UPDATE_SELECTED_BOARD_ID,
@@ -41,7 +43,7 @@ export const fetchBoard = (boardId) => {
     return (dispatch) => {
         dispatch( requestBoard(boardId) )
 
-        fetch('http://localhost:8080/school-board/' + boardId)
+        fetch(BASE_API + '/school-board/' + boardId)
                     .then(response => response.json())
                     .then(board => dispatch(receiveBoard(board)))
     }
@@ -72,7 +74,7 @@ export const fetchContacts = (boardId) => {
     return (dispatch) => {
         dispatch( requestContacts(boardId) )
 
-        fetch('http://localhost:8080/contacts/' + boardId)
+        fetch(BASE_API + '/contacts/' + boardId)
                     .then(response => response.json())
                     .then(contacts => dispatch( receiveContacts(contacts) ))
     }
@@ -81,7 +83,7 @@ export const fetchContacts = (boardId) => {
 export const saveBoard = (updatedBoard) => {
     return (dispatch) => {
 
-        fetch('http://localhost:8080/school-board', {
+        fetch(BASE_API + '/school-board', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(updatedBoard)
@@ -94,27 +96,25 @@ export const saveBoard = (updatedBoard) => {
 export const saveContact = (updatedContact) => {
     return (dispatch) => {
 
-        fetch('http://localhost:8080/contact', {
+        fetch(BASE_API + '/contact', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(updatedContact)
         })
             .then(response => response.json())
-
-        dispatch( receiveContact(updatedContact) )
+            .then(contact => dispatch( receiveContact(contact) ))
     }
 }
 
 export const addContact = (newContact) => {
     return (dispatch) => {
 
-        fetch('http://localhost:8080/add/contact', {
+        fetch(BASE_API + '/add/contact', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(newContact)
         })
             .then(response => response.json())
-
-        dispatch( receiveContact(newContact) )
+            .then(contact => dispatch( receiveContact(contact) ) )
     }
 }
