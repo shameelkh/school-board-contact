@@ -2,7 +2,7 @@ package ws;
 
 import domain.Address;
 import domain.Contact;
-import domain.Employer;
+import domain.SchoolBoard;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,7 +11,7 @@ import java.util.*;
 @SpringBootApplication
 public class Application {
 
-    public static Map<Integer, Employer> employersMap = new HashMap<Integer, Employer>();
+    public static Map<Integer, SchoolBoard> boardsMap = new HashMap<Integer, SchoolBoard>();
     public static Map<Integer, List<Contact>> boardToContactsMap = new HashMap<Integer, List<Contact>>();
 
     private static int id = 0;
@@ -29,13 +29,13 @@ public class Application {
 
 
         // Create school boards
-        Employer employer1 = new Employer(1, "Halton District", true, 20120101, null, "Sam", address1, "www.HaltonDistrict.com", "6073332222","12:00", "12:00");
-        Employer employer2 = new Employer(2, "Catholic District School Board", true, 19901005, null, "Catty", address2, "", "9056662233","12:00", "12:00");
-        Employer employer3 = new Employer(3, "Allson School Board", false, 18021201, 20150202, "Sam", address3, "www.Allson.com", "9013341122","12:00", "12:00");
+        SchoolBoard schoolBoard1 = new SchoolBoard(1, "Halton District", true, 20120101, null, "Sam", address1, "www.HaltonDistrict.com", "6073332222","12:00", "12:00");
+        SchoolBoard schoolBoard2 = new SchoolBoard(2, "Catholic District School Board", true, 19901005, null, "Catty", address2, "", "9056662233","12:00", "12:00");
+        SchoolBoard schoolBoard3 = new SchoolBoard(3, "Allson School Board", false, 18021201, 20150202, "Sam", address3, "www.Allson.com", "9013341122","12:00", "12:00");
 
-        employersMap.put(employer1.getBoardNumber(), employer1);
-        employersMap.put(employer2.getBoardNumber(), employer2);
-        employersMap.put(employer3.getBoardNumber(), employer3);
+        boardsMap.put(schoolBoard1.getBoardNumber(), schoolBoard1);
+        boardsMap.put(schoolBoard2.getBoardNumber(), schoolBoard2);
+        boardsMap.put(schoolBoard3.getBoardNumber(), schoolBoard3);
 
         // Create contacts for each school board
 

@@ -87,24 +87,34 @@ body {
     margin-left:25%;
 }
 
-
+ul.nav-pills {
+    font-size: 15px;
+}
 
 ul.nav a:hover {
-    color: white !important;
-    background-color: #6c706b !important;
+    color: green;
+    background-color: white;
+    border-bottom: 5px solid green;
 }
 
 ul.nav a:active {
-    color: white !important;
-    background-color: #6c706b !important;
+    color: green;
+    background-color: white;
+    border-bottom: 5px solid green;
 }
 
 ul.nav a:focus {
-    color: white !important;
-    background-color: #484c47 !important;
+    color: green;
+    background-color: white;
+    border-bottom: 5px solid green;
 }
 
 .active {
+    color: green;
+    border-bottom: 5px solid green;
+}
+
+.active2 {
     color: white;
     background-color: #484c47;
 }

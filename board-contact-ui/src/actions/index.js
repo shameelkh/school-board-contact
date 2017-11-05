@@ -41,7 +41,7 @@ export const fetchBoard = (boardId) => {
     return (dispatch) => {
         dispatch( requestBoard(boardId) )
 
-        fetch('http://localhost:8080/employer/' + boardId)
+        fetch('http://localhost:8080/school-board/' + boardId)
                     .then(response => response.json())
                     .then(board => dispatch(receiveBoard(board)))
     }
@@ -81,7 +81,7 @@ export const fetchContacts = (boardId) => {
 export const saveBoard = (updatedBoard) => {
     return (dispatch) => {
 
-        fetch('http://localhost:8080/employer', {
+        fetch('http://localhost:8080/school-board', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(updatedBoard)

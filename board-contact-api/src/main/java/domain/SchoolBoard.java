@@ -5,7 +5,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class Employer {
+public class SchoolBoard {
 
     private int boardNumber;
     private String boardName;

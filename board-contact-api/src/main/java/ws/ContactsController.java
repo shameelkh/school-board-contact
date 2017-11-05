@@ -22,10 +22,10 @@ public class ContactsController {
     @CrossOrigin
     @RequestMapping(value = "/contact", method = RequestMethod.POST)
     public ResponseEntity saveContact(@RequestBody Contact updatedContact) {
-        List<Contact> contactsForEmployer = Application.boardToContactsMap.get(updatedContact.getBoardNumber());
+        List<Contact> contactsForBoard = Application.boardToContactsMap.get(updatedContact.getBoardNumber());
 
-        for(int index = 0; index < contactsForEmployer.size(); index++) {
-            Contact contact = contactsForEmployer.get(index);
+        for(int index = 0; index < contactsForBoard.size(); index++) {
+            Contact contact = contactsForBoard.get(index);
 
             if(contact.getId() == updatedContact.getId()) {
                 copyUpdatedContact(contact, updatedContact);
