@@ -54,7 +54,7 @@ public class ContactsController {
         contact.setFirstName(updatedContact.getFirstName());
         contact.setLastName(updatedContact.getLastName());
         contact.setEmail(updatedContact.getEmail());
-        contact.setTitle(updatedContact.getEmail());
+        contact.setTitle(updatedContact.getTitle());
         contact.setAddress(updatedContact.getAddress());
         contact.setPhoneNumber(updatedContact.getPhoneNumber());
         contact.setPrimary(updatedContact.isPrimary());
