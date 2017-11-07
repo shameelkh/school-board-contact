@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 
 class Contact extends React.Component {
 
@@ -58,6 +60,13 @@ class Contact extends React.Component {
             </div>
         )
     }
+}
+
+Contact.propTypes = {
+    contact: PropTypes.object.isRequired,
+    isExpanded: PropTypes.bool.isRequired,
+    handleExpand: PropTypes.func.isRequired,
+    enableEditMode: PropTypes.func.isRequired
 }
 
 export default Contact
