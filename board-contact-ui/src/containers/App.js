@@ -8,7 +8,7 @@ import ContactsPage from '../containers/ContactsPage'
 import Header from './Header'
 import Navigation from './Navigation'
 import ProfilePageContainer from '../containers/ProfilePageContainer'
-import AccountMgmtPage from '../containers/AccountMgmtPage'
+import AccountMgmtPageContainer from '../containers/AccountMgmtPageContainer'
 
 
 class App extends Component {
@@ -31,12 +31,6 @@ class App extends Component {
         }
     }
 
-    renderAccountMgmtPage = () => {
-        return (
-            <AccountMgmtPage board={this.props.boardInfo.board} />
-        )
-    }
-
     render() {
         let match = this.props.match
         let boardName = (this.props.boardInfo.board ? this.props.boardInfo.board.boardName : '')
@@ -56,7 +50,7 @@ class App extends Component {
                         <div class="main-content">
                             <Switch>
                                 <Route exact path={`${match.path}profile`} component={ProfilePageContainer} />
-                                <Route path={`${match.path}account-mgmt`} render={this.renderAccountMgmtPage} />
+                                <Route path={`${match.path}account-mgmt`} component={AccountMgmtPageContainer} />
                                 <Route path={`${match.path}contacts`} component={ContactsPage} />
                             </Switch>
                         </div>
