@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { Switch, Link } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { fetchBoard, fetchContacts }  from '../actions'
 import ContactsPage from '../containers/ContactsPage'
 import Header from './Header'
 import Navigation from './Navigation'
-import ProfilePage from '../containers/ProfilePage'
+import ProfilePageContainer from '../containers/ProfilePageContainer'
 import AccountMgmtPage from '../containers/AccountMgmtPage'
 
 
@@ -55,7 +55,7 @@ class App extends Component {
                         </div>
                         <div class="main-content">
                             <Switch>
-                                <Route exact path={`${match.path}profile`} component={ProfilePage} />
+                                <Route exact path={`${match.path}profile`} component={ProfilePageContainer} />
                                 <Route path={`${match.path}account-mgmt`} render={this.renderAccountMgmtPage} />
                                 <Route path={`${match.path}contacts`} component={ContactsPage} />
                             </Switch>
