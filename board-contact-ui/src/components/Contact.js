@@ -4,10 +4,6 @@ import PropTypes from 'prop-types'
 
 class Contact extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         let contact = this.props.contact
 

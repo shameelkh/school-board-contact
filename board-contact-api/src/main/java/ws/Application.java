@@ -23,15 +23,15 @@ public class Application {
 
     public static void startUp() {
         // Addresses
-        Address address1 = new Address(1, "1255 Younge St", "Toronto", "LUT0E3");
+        Address address1 = new Address(1, "1255 Younge St", "Toronto", "L8T0E2");
         Address address2 = new Address(2, "4112 Random St", "Toronto", "XUE0E5");
         Address address3 = new Address(1, "7781 Shido St", "Milton", "IRT0E3");
 
 
         // Create school boards
-        SchoolBoard schoolBoard1 = new SchoolBoard(1, "Halton District", true, 20120101, null, "Sam", address1, "www.HaltonDistrict.com", "6073332222","12:00", "12:00");
-        SchoolBoard schoolBoard2 = new SchoolBoard(2, "Catholic District School Board", true, 19901005, null, "Catty", address2, "", "9056662233","12:00", "12:00");
-        SchoolBoard schoolBoard3 = new SchoolBoard(3, "Allson School Board", false, 18021201, 20150202, "Sam", address3, "www.Allson.com", "9013341122","12:00", "12:00");
+        SchoolBoard schoolBoard1 = new SchoolBoard(1, "Halton District", true, "2012-01-01", null, "Sam", address1, "www.HaltonDistrict.com", "6073332222","12:00", "12:00");
+        SchoolBoard schoolBoard2 = new SchoolBoard(2, "Catholic District School Board", true, "1990-10-05", null, "Catty", address2, "", "9056662233","12:00", "12:00");
+        SchoolBoard schoolBoard3 = new SchoolBoard(3, "Allson School Board", false, "1802-12-01", "2015-02-02", "Sam", address3, "www.Allson.com", "9013341122","12:00", "12:00");
 
         boardsMap.put(schoolBoard1.getBoardNumber(), schoolBoard1);
         boardsMap.put(schoolBoard2.getBoardNumber(), schoolBoard2);
@@ -40,7 +40,7 @@ public class Application {
         // Create contacts for each school board
 
         Contact contact1ForBoard1 = new Contact(getNewId(), 1, "Mr.", "Tom", "Jerry", "Tom@Jerry.com", "Jr Accountant", address1, "5552229999", true);
-        Contact contact2ForBoard1 = new Contact(getNewId(), 1, "Mr.", "Sam", "Foo", "SamFoo@hotmail.com", "Teacher", address1, "4441119999", false);
+        Contact contact2ForBoard1 = new Contact(getNewId(), 1, "Mr.", "Luke", "Foo", "LukeFoo@hotmail.com", "Teacher", address1, "4441119999", false);
         Contact contact3ForBoard1 = new Contact(getNewId(), 1, "Ms.", "Cat", "Jul", "Cal@Jul.com", "Manager", address1, "6511234444", false);
 
         Contact contact1ForBoard2 = new Contact(getNewId(), 2, "Mr.", "Ash", "Catchem", "Gotem@all.com", "Pokemon Trainer", address2, "9993214545", true);

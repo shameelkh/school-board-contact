@@ -10,8 +10,8 @@ public class SchoolBoard {
     private int boardNumber;
     private String boardName;
     private boolean isActive;
-    private Integer openDate;
-    private Integer closeDate;
+    private String openDate;
+    private String closeDate;
     private String accountOwner;
     private Address address;
     private String website;

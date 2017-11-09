@@ -34,36 +34,26 @@ class EditAccountMgmtForm extends React.Component {
     }
 
     handleAccountOwnerChange = (e) => {
-        this.setState({
-            accountOwner: e.target.value
-        })
-
         let errorMessage = (e.target.value.length === 0 ? 'Required field' : null)
 
         this.setState({
+            accountOwner: e.target.value,
             errors: { ...this.state.errors, ['accountOwner']: errorMessage }
         })
-
     }
 
     handleOpenDateChange = (e) => {
-        this.setState({
-            openDate: e.target.value
-        })
-
         let errorMessage = (e.target.value.length === 0 ? 'Invalid date' : null)
 
         this.setState({
+            openDate: e.target.value,
             errors: { ...this.state.errors, ['openDate']: errorMessage }
         })
     }
 
     handleCloseDateChange = (e) => {
         this.setState({
-            closeDate: e.target.value
-        })
-
-        this.setState({
+            closeDate: e.target.value,
             errors: { ...this.state.errors, ['closeDate']: undefined }
         })
     }

@@ -40,87 +40,65 @@ class EditProfileForm extends React.Component {
     }
 
     handleStreetChange = (e) => {
-        this.setState({
-            street: e.target.value
-        })
-
         let errorMessage = (e.target.value.length == 0 ? 'Required field' : null)
 
         this.setState({
+            street: e.target.value,
             errors: { ...this.state.errors, ['street']: errorMessage }
         })
     }
 
     handleCityChange = (e) => {
-        this.setState({
-            city: e.target.value
-        })
-
         let errorMessage = (e.target.value.length == 0 ? 'Required field' : null)
 
         this.setState({
+            city: e.target.value,
             errors: { ...this.state.errors, ['city']: errorMessage }
         })
     }
 
     handlePostalCodeChange = (e) => {
-        this.setState({
-            postalCode: e.target.value
-        })
-
         let isPostalCode = !/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/.test(e.target.value)
-
         let errorMessage = (isPostalCode ? 'Not a valid postal code' : null)
 
         this.setState({
+            postalCode: e.target.value,
             errors: { ...this.state.errors, ['postalCode']: errorMessage }
         })
     }
 
     handlePhoneNumberChange = (e) => {
-        this.setState({
-            phoneNumber: e.target.value
-        })
-
         let errorMessage = (!/^[0-9]{10}$/.test(e.target.value) ? 'Not a valid phone number' : null)
 
         this.setState({
+            phoneNumber: e.target.value,
             errors: { ...this.state.errors, ['phoneNumber']: errorMessage }
         })
     }
 
     handleWebsiteChange = (e) => {
-        this.setState({
-            website: e.target.value
-        })
-
         let errorMessage = (!/^(www\.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}$/.test(e.target.value) ? 'Not a valid website' : null)
 
         this.setState({
+            website: e.target.value,
             errors: { ...this.state.errors, ['website']: errorMessage }
         })
     }
 
     handleOpenTimeChange = (e) => {
-        this.setState({
-            openTime: e.target.value
-        })
-
         let errorMessage = (!/^[0-9]{2}:[0-9]{2}$/.test(e.target.value) ? 'Invalid open time format (i.e. 12:00)' : null)
 
         this.setState({
+            openTime: e.target.value,
             errors: { ...this.state.errors, ['openTime']: errorMessage }
         })
     }
 
     handleCloseTimeChange = (e) => {
-        this.setState({
-            closeTime: e.target.value
-        })
-
         let errorMessage = (!/^[0-9]{2}:[0-9]{2}$/.test(e.target.value) ? 'Invalid close time format (i.e. 12:00)' : null)
 
         this.setState({
+            closeTime: e.target.value,
             errors: { ...this.state.errors, ['closeTime']: errorMessage }
         })
     }

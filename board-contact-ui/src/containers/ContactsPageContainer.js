@@ -16,9 +16,6 @@ class ContactsPageContainer extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-    }
-
     handleExpand = (contactId, isExpanded) => {
         let contactInEditMode = false
 
