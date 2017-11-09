@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { fetchBoard, fetchContacts }  from '../actions'
-import ContactsPage from '../containers/ContactsPage'
-import Header from './Header'
-import Navigation from './Navigation'
+import ContactsPageContainer from '../containers/ContactsPageContainer'
+import Header from '../components/Header'
+import Navigation from '../components/Navigation'
 import ProfilePageContainer from '../containers/ProfilePageContainer'
 import AccountMgmtPageContainer from '../containers/AccountMgmtPageContainer'
 
@@ -51,7 +51,7 @@ class App extends Component {
                             <Switch>
                                 <Route exact path={`${match.path}profile`} component={ProfilePageContainer} />
                                 <Route path={`${match.path}account-mgmt`} component={AccountMgmtPageContainer} />
-                                <Route path={`${match.path}contacts`} component={ContactsPage} />
+                                <Route path={`${match.path}contacts`} component={ContactsPageContainer} />
                             </Switch>
                         </div>
                       </div>
