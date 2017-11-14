@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { Switch, Link } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { fetchBoard, fetchContacts }  from '../actions'
-import ContactsPage from '../containers/ContactsPage'
-import Header from './Header'
-import Navigation from './Navigation'
-import ProfilePage from '../containers/ProfilePage'
-import AccountMgmtPage from '../containers/AccountMgmtPage'
+import ContactsPageContainer from '../containers/ContactsPageContainer'
+import Header from '../components/Header'
+import Navigation from '../components/Navigation'
+import ProfilePageContainer from '../containers/ProfilePageContainer'
+import AccountMgmtPageContainer from '../containers/AccountMgmtPageContainer'
 
 
 class App extends Component {
@@ -31,12 +31,6 @@ class App extends Component {
         }
     }
 
-    renderAccountMgmtPage = () => {
-        return (
-            <AccountMgmtPage board={this.props.boardInfo.board} />
-        )
-    }
-
     render() {
         let match = this.props.match
         let boardName = (this.props.boardInfo.board ? this.props.boardInfo.board.boardName : '')
@@ -55,9 +49,9 @@ class App extends Component {
                         </div>
                         <div class="main-content">
                             <Switch>
-                                <Route exact path={`${match.path}profile`} component={ProfilePage} />
-                                <Route path={`${match.path}account-mgmt`} render={this.renderAccountMgmtPage} />
-                                <Route path={`${match.path}contacts`} component={ContactsPage} />
+                                <Route exact path={`${match.path}profile`} component={ProfilePageContainer} />
+                                <Route path={`${match.path}account-mgmt`} component={AccountMgmtPageContainer} />
+                                <Route path={`${match.path}contacts`} component={ContactsPageContainer} />
                             </Switch>
                         </div>
                       </div>

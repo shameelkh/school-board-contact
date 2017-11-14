@@ -1,6 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { saveBoard } from '../actions'
+import PropTypes from 'prop-types';
 import EditAccountMgmtForm from '../components/EditAccountMgmtForm'
 
 class AccountMgmtPage extends React.Component {
@@ -69,18 +68,9 @@ class AccountMgmtPage extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        boardInfo: state.boardInfo
-    }
+AccountMgmtPage.propTypes = {
+    board: PropTypes.object.isRequired,
+    handleSaveBoard: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handleSaveBoard: (updatedBoard) => {
-            dispatch( saveBoard(updatedBoard) )
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AccountMgmtPage)
+export default AccountMgmtPage

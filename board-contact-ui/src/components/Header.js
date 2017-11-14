@@ -1,5 +1,5 @@
 import React from 'react'
-import Search from '../containers/Search'
+import SearchContainer from '../containers/SearchContainer'
 
 const Header = () => {
     return (
@@ -7,7 +7,7 @@ const Header = () => {
             <div className="col-md-1"></div>
             <div className="col-md-3">
                 <br/>
-                <Search/>
+                <SearchContainer />
             </div>
             <div className="col-md-6">
                 <h1>School Boards Data Center</h1>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchContacts, saveContact, addContact } from '../actions'
+import { saveContact, addContact } from '../actions'
 import Contact from '../components/Contact'
 import EditContactForm from '../components/EditContactForm'
 
-class ContactsPage extends Component {
+class ContactsPageContainer extends Component {
     constructor(props) {
         super(props)
 
@@ -14,9 +14,6 @@ class ContactsPage extends Component {
             inEditMode: {},
             addingNewContact: false,
         }
-    }
-
-    componentWillReceiveProps(nextProps) {
     }
 
     handleExpand = (contactId, isExpanded) => {
@@ -65,26 +62,23 @@ class ContactsPage extends Component {
 
         return (
             <div>
-                <div>
-                    {!this.state.addingNewContact &&
-                        <button className="btn btn-success add-contact-btn"
-                            onClick={this.handleAddButton}>Add</button>
-                    }
-                </div>
-                <div>
-                    {this.state.addingNewContact &&
-                        <div className="group-section-contact">
-                            <div class="field-section-contact">
-                                <span class="field-content">New Contact</span>
-                            </div>
+                {!this.state.addingNewContact &&
+                    <button className="btn btn-success add-contact-btn"
+                        onClick={this.handleAddButton}>Add</button>
+                }
 
-                        <EditContactForm contact={ {boardNumber: this.props.boardNumber} }
-                                         cancelEditMode={this.cancelEditMode}
-                                         saveContact={this.props.handleAddContact} />
+                {this.state.addingNewContact &&
+                    <div className="group-section-contact">
+                        <div class="field-section-contact">
+                            <span class="field-content">New Contact</span>
                         </div>
 
-                    }
-                </div>
+                        <EditContactForm contact={ {boardNumber: this.props.boardNumber} }
+                                     cancelEditMode={this.cancelEditMode}
+                                     saveContact={this.props.handleAddContact} />
+                    </div>
+                }
+
                 {contacts.map(contact => (
                     <div>
                         {!this.state.inEditMode[contact.id] &&
@@ -108,6 +102,7 @@ class ContactsPage extends Component {
     }
 }
 
+
 const mapStateToProps = (state) => {
     return {
         contactInfo: state.contactInfo,
@@ -127,9 +122,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-ContactsPage.propTypes = {
+ContactsPageContainer.propTypes = {
     contactInfo: PropTypes.object.isRequired,
     boardNumber: PropTypes.number.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactsPage)
+export default connect(mapStateToProps, mapDispatchToProps)(ContactsPageContainer)

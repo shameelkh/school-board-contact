@@ -16,7 +16,7 @@ const receiveSingleContact = (contacts, receivedContact) => {
     let foundContact = false;
 
     let newContactList = contacts.map((contact) => {
-        if (contact.id == receivedContact.id) {
+        if (contact.id === receivedContact.id) {
             foundContact = true
             return receivedContact
         }

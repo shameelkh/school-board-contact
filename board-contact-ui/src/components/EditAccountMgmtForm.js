@@ -16,13 +16,9 @@ class EditAccountMgmtForm extends React.Component {
     }
 
     handleBlur = (fieldName) => (e) => {
-        console.log('onBlur')
-
         this.setState({
           touched: { ...this.state.touched, [fieldName]: true },
         });
-
-        console.log(this.state.touched)
     }
 
     isInvalid = (fieldName) => {
@@ -38,54 +34,28 @@ class EditAccountMgmtForm extends React.Component {
     }
 
     handleAccountOwnerChange = (e) => {
-        this.setState({
-            accountOwner: e.target.value
-        })
+        let errorMessage = (e.target.value.length === 0 ? 'Required field' : null)
 
-        if(e.target.value.length === 0) {
-             this.setState({
-                errors: { ...this.state.errors, ['accountOwner']: 'Required field' }
-             })
-        }
-        else {
-            this.setState({
-                errors: { ...this.state.errors, ['accountOwner']: undefined }
-            })
-        }
+        this.setState({
+            accountOwner: e.target.value,
+            errors: { ...this.state.errors, ['accountOwner']: errorMessage }
+        })
     }
 
     handleOpenDateChange = (e) => {
-        this.setState({
-            openDate: e.target.value
-        })
+        let errorMessage = (e.target.value.length === 0 ? 'Invalid date' : null)
 
-        if(e.target.value.length === 0) {
-             this.setState({
-                errors: { ...this.state.errors, ['openDate']: 'Required field' }
-             })
-        }
-        else {
-            this.setState({
-                errors: { ...this.state.errors, ['openDate']: undefined }
-            })
-        }
+        this.setState({
+            openDate: e.target.value,
+            errors: { ...this.state.errors, ['openDate']: errorMessage }
+        })
     }
 
     handleCloseDateChange = (e) => {
         this.setState({
-            closeDate: e.target.value
+            closeDate: e.target.value,
+            errors: { ...this.state.errors, ['closeDate']: undefined }
         })
-
-        if(e.target.value.length === 0) {
-             this.setState({
-                errors: { ...this.state.errors, ['closeDate']: 'Required field' }
-             })
-        }
-        else {
-            this.setState({
-                errors: { ...this.state.errors, ['closeDate']: undefined }
-            })
-        }
     }
 
     handleActiveChange = (e) => {
@@ -137,7 +107,7 @@ class EditAccountMgmtForm extends React.Component {
 
                 <div className="row group-section">
                     <div class="col-md-4">
-                        <input type="text"
+                        <input type="date"
                                 className={"field-content " + (this.isInvalid('openDate') ? 'input-error' : '')}
                                 value={this.state.openDate}
                                 onChange={this.handleOpenDateChange}
@@ -146,7 +116,7 @@ class EditAccountMgmtForm extends React.Component {
                         <div><span class="error-msg">{this.isInvalid('openDate') ? this.state.errors.openDate : ''}</span></div>
                     </div>
                     <div class="col-md-4">
-                        <input type="text"
+                        <input type="date"
                                 className={"field-content " + (this.isInvalid('closeDate') ? 'input-error' : '')}
                                 value={this.state.closeDate}
                                 onChange={this.handleCloseDateChange}

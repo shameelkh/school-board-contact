@@ -1,12 +1,11 @@
 import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
 import boardContactAppReducer from './reducers'
-import Root from './components/Root'
+import Root from './containers/Root'
 
 let store = createStore(
                 boardContactAppReducer,
