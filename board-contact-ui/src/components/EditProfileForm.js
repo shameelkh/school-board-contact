@@ -44,7 +44,7 @@ class EditProfileForm extends React.Component {
 
         this.setState({
             street: e.target.value,
-            errors: { ...this.state.errors, ['street']: errorMessage }
+            errors: { ...this.state.errors, 'street': errorMessage }
         })
     }
 
@@ -53,7 +53,7 @@ class EditProfileForm extends React.Component {
 
         this.setState({
             city: e.target.value,
-            errors: { ...this.state.errors, ['city']: errorMessage }
+            errors: { ...this.state.errors, 'city': errorMessage }
         })
     }
 
@@ -63,7 +63,7 @@ class EditProfileForm extends React.Component {
 
         this.setState({
             postalCode: e.target.value,
-            errors: { ...this.state.errors, ['postalCode']: errorMessage }
+            errors: { ...this.state.errors, 'postalCode': errorMessage }
         })
     }
 
@@ -72,7 +72,7 @@ class EditProfileForm extends React.Component {
 
         this.setState({
             phoneNumber: e.target.value,
-            errors: { ...this.state.errors, ['phoneNumber']: errorMessage }
+            errors: { ...this.state.errors, 'phoneNumber': errorMessage }
         })
     }
 
@@ -81,7 +81,7 @@ class EditProfileForm extends React.Component {
 
         this.setState({
             website: e.target.value,
-            errors: { ...this.state.errors, ['website']: errorMessage }
+            errors: { ...this.state.errors, 'website': errorMessage }
         })
     }
 
@@ -90,7 +90,7 @@ class EditProfileForm extends React.Component {
 
         this.setState({
             openTime: e.target.value,
-            errors: { ...this.state.errors, ['openTime']: errorMessage }
+            errors: { ...this.state.errors, 'openTime': errorMessage }
         })
     }
 
@@ -99,7 +99,7 @@ class EditProfileForm extends React.Component {
 
         this.setState({
             closeTime: e.target.value,
-            errors: { ...this.state.errors, ['closeTime']: errorMessage }
+            errors: { ...this.state.errors, 'closeTime': errorMessage }
         })
     }
 
@@ -138,74 +138,74 @@ class EditProfileForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit} className="col-md-10">
                 <div className="row group-section">
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <input type="text"
                                value={this.state.street}
                                className={"field-content " + (this.isInvalid('street') ? 'input-error' : '')}
                                onChange={this.handleStreetChange}
                                onBlur={this.handleBlur('street')}/>
-                        <div><span class="field-name">Street</span></div>
-                        <div><span class="error-msg">{this.isInvalid('street') ? this.state.errors.street : ''}</span></div>
+                        <div><span className="field-name">Street</span></div>
+                        <div><span className="error-msg">{this.isInvalid('street') ? this.state.errors.street : ''}</span></div>
                     </div>
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <input type="text"
                                value={this.state.city}
                                className={"field-content " + (this.isInvalid('city') ? 'input-error' : '')}
                                onChange={this.handleCityChange}
                                onBlur={this.handleBlur('city')} />
-                        <div><span class="field-name">City</span></div>
-                        <div><span class="error-msg">{this.isInvalid('city') ? this.state.errors.city : ''}</span></div>
+                        <div><span className="field-name">City</span></div>
+                        <div><span className="error-msg">{this.isInvalid('city') ? this.state.errors.city : ''}</span></div>
                     </div>
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <input type="text"
                                className={"field-content " + (this.isInvalid('postalCode') ? 'input-error' : '')}
                                value={this.state.postalCode}
                                onChange={this.handlePostalCodeChange}
                                onBlur={this.handleBlur('postalCode')}/>
-                        <div><span class="field-name">Postal Code</span></div>
+                        <div><span className="field-name">Postal Code</span></div>
                         <div><span className="error-msg">{this.isInvalid('postalCode') ? this.state.errors.postalCode : ''}</span></div>
                     </div>
                 </div>
 
                 <div className="row group-section">
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <input type="number"
                                 className={"field-content " + (this.isInvalid('phoneNumber') ? 'input-error' : '')}
                                 value={this.state.phoneNumber}
                                 onChange={this.handlePhoneNumberChange}
                                 onBlur={this.handleBlur('phoneNumber')}/>
-                        <div><span class="field-name">Phone</span></div>
-                        <div><span class="error-msg">{this.isInvalid('phoneNumber') ? this.state.errors.phoneNumber : ''}</span></div>
+                        <div><span className="field-name">Phone</span></div>
+                        <div><span className="error-msg">{this.isInvalid('phoneNumber') ? this.state.errors.phoneNumber : ''}</span></div>
                     </div>
-                    <div class="col-md-4">
-                        <input type="text" class="field-content"
+                    <div className="col-md-4">
+                        <input type="text" className="field-content"
                                 className={"field-content " + (this.isInvalid('website') ? 'input-error' : '')}
                                 value={this.state.website}
                                 onChange={this.handleWebsiteChange}
                                 onBlur={this.handleBlur('website')}/>
-                        <div><span class="field-name">Website</span></div>
-                        <div><span class="error-msg">{this.isInvalid('website') ? this.state.errors.website : ''}</span></div>
+                        <div><span className="field-name">Website</span></div>
+                        <div><span className="error-msg">{this.isInvalid('website') ? this.state.errors.website : ''}</span></div>
                     </div>
                 </div>
 
                 <div className="row group-section">
-                     <div class="col-md-4">
-                        <input type="text" class="field-content"
+                     <div className="col-md-4">
+                        <input type="text" className="field-content"
                                className={"field-content " + (this.isInvalid('openTime') ? 'input-error' : '')}
                                value={this.state.openTime}
                                onChange={this.handleOpenTimeChange}
                                onBlur={this.handleBlur('openTime')}/>
-                        <div><span class="field-name">Open Time</span></div>
-                        <div><span class="error-msg">{this.isInvalid('openTime') ? this.state.errors.openTime : ''}</span></div>
+                        <div><span className="field-name">Open Time</span></div>
+                        <div><span className="error-msg">{this.isInvalid('openTime') ? this.state.errors.openTime : ''}</span></div>
                      </div>
-                     <div class="col-md-4">
-                        <input type="text" class="field-content"
+                     <div className="col-md-4">
+                        <input type="text" className="field-content"
                                className={"field-content " + (this.isInvalid('closeTime') ? 'input-error' : '')}
                                value={this.state.closeTime}
                                onChange={this.handleCloseTimeChange}
                                onBlur={this.handleBlur('closeTime')} />
-                        <div><span class="field-name">Close Time</span></div>
-                        <div><span class="error-msg">{this.isInvalid('closeTime') ? this.state.errors.closeTime : ''}</span></div>
+                        <div><span className="field-name">Close Time</span></div>
+                        <div><span className="error-msg">{this.isInvalid('closeTime') ? this.state.errors.closeTime : ''}</span></div>
                      </div>
                 </div>
 
