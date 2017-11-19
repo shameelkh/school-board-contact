@@ -38,7 +38,7 @@ const ContactsPage = (props) => {
                         <EditContactForm
                             contact={contact}
                             cancelEditMode={props.cancelEditMode}
-                            saveContact={props.handleSaveContact} />
+                            saveContact={props.handleAddContact} />
                     }
                 </div>
             ))}
@@ -55,7 +55,8 @@ ContactsPage.propTypes = {
     handleAddButton: PropTypes.func.isRequired,
     boardNumber: PropTypes.number.isRequired,
     cancelEditMode: PropTypes.func.isRequired,
-    handleSaveContact: PropTypes.func.isRequired
+    handleSaveContact: PropTypes.func.isRequired,
+    handleAddContact: PropTypes.func.isRequired
 }
 
 export default ContactsPage

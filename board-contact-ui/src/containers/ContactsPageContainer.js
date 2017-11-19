@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { saveContact, addContact } from '../actions'
 import ContactsPage from '../components/ContactsPage'
@@ -68,7 +67,7 @@ class ContactsPageContainer extends Component {
                 handleExpand={this.handleExpand}
                 addingNewContact={this.state.addingNewContact}
                 handleAddButton={this.handleAddButton}
-                handleAddContact={this.props.handleAddButton}
+                handleAddContact={this.props.handleAddContact}
                 boardNumber={this.props.boardNumber}
                 cancelEditMode={this.cancelEditMode}
                 handleSaveContact={this.props.handleSaveContact} />

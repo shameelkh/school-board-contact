@@ -6,25 +6,25 @@ const AccountMgmtPage = ({board, enableEditMode}) => {
     return (
         <div>
             <div className="group-section">
-                <div class="field-section">
-                    <span class="field-content">{board.accountOwner}</span>
-                    <div><span class="field-name">Account Owner</span></div>
+                <div className="field-section">
+                    <span className="field-content">{board.accountOwner}</span>
+                    <div><span className="field-name">Account Owner</span></div>
                 </div>
             </div>
             <div className="group-section">
-                <div class="field-section">
-                    <span class="field-content">{board.openDate}</span>
-                    <div><span class="field-name">Open Date</span></div>
+                <div className="field-section">
+                    <span className="field-content">{board.openDate}</span>
+                    <div><span className="field-name">Open Date</span></div>
                 </div>
-                <div class="field-section">
-                    <span class="field-content">{board.closeDate}</span>
-                    <div><span class="field-name">Close Date</span></div>
+                <div className="field-section">
+                    <span className="field-content">{board.closeDate}</span>
+                    <div><span className="field-name">Close Date</span></div>
                 </div>
             </div>
             <div className="group-section">
-                <div class="field-section">
-                    <span class="field-content">{board.active ? "Yes" : "No"}</span>
-                    <div><span class="field-name">Active</span></div>
+                <div className="field-section">
+                    <span className="field-content">{board.active ? "Yes" : "No"}</span>
+                    <div><span className="field-name">Active</span></div>
                 </div>
             </div>
 

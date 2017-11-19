@@ -38,7 +38,7 @@ class EditAccountMgmtForm extends React.Component {
 
         this.setState({
             accountOwner: e.target.value,
-            errors: { ...this.state.errors, ['accountOwner']: errorMessage }
+            errors: { ...this.state.errors, 'accountOwner': errorMessage }
         })
     }
 
@@ -47,14 +47,14 @@ class EditAccountMgmtForm extends React.Component {
 
         this.setState({
             openDate: e.target.value,
-            errors: { ...this.state.errors, ['openDate']: errorMessage }
+            errors: { ...this.state.errors, 'openDate': errorMessage }
         })
     }
 
     handleCloseDateChange = (e) => {
         this.setState({
             closeDate: e.target.value,
-            errors: { ...this.state.errors, ['closeDate']: undefined }
+            errors: { ...this.state.errors, 'closeDate': undefined }
         })
     }
 
@@ -94,40 +94,40 @@ class EditAccountMgmtForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit} className="col-md-10">
                 <div className="row group-section">
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <input type="text"
                                value={this.state.accountOwner}
                                className={"field-content " + (this.isInvalid('accountOwner') ? 'input-error' : '')}
                                onChange={this.handleAccountOwnerChange}
                                onBlur={this.handleBlur('accountOwner')}/>
-                        <div><span class="field-name">Account Owner</span></div>
-                        <div><span class="error-msg">{this.isInvalid('accountOwner') ? this.state.errors.accountOwner : ''}</span></div>
+                        <div><span className="field-name">Account Owner</span></div>
+                        <div><span className="error-msg">{this.isInvalid('accountOwner') ? this.state.errors.accountOwner : ''}</span></div>
                     </div>
                 </div>
 
                 <div className="row group-section">
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <input type="date"
                                 className={"field-content " + (this.isInvalid('openDate') ? 'input-error' : '')}
                                 value={this.state.openDate}
                                 onChange={this.handleOpenDateChange}
                                 onBlur={this.handleBlur('openDate')}/>
-                        <div><span class="field-name">Open Date</span></div>
-                        <div><span class="error-msg">{this.isInvalid('openDate') ? this.state.errors.openDate : ''}</span></div>
+                        <div><span className="field-name">Open Date</span></div>
+                        <div><span className="error-msg">{this.isInvalid('openDate') ? this.state.errors.openDate : ''}</span></div>
                     </div>
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <input type="date"
                                 className={"field-content " + (this.isInvalid('closeDate') ? 'input-error' : '')}
                                 value={this.state.closeDate}
                                 onChange={this.handleCloseDateChange}
                                 onBlur={this.handleBlur('closeDate')}/>
-                        <div><span class="field-name">Close Date</span></div>
-                        <div><span class="error-msg">{this.isInvalid('closeDate') ? this.state.errors.closeDate : ''}</span></div>
+                        <div><span className="field-name">Close Date</span></div>
+                        <div><span className="error-msg">{this.isInvalid('closeDate') ? this.state.errors.closeDate : ''}</span></div>
                     </div>
                 </div>
 
                 <div className="row group-section">
-                     <div class="col-md-4">
+                     <div className="col-md-4">
                         <select className={"field-content " + (this.isInvalid('active') ? 'input-error' : '')}
                                 value={this.state.active ? "true" : "false"}
                                 onChange={this.handleActiveChange}
@@ -136,8 +136,8 @@ class EditAccountMgmtForm extends React.Component {
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
-                        <div><span class="field-name">Active</span></div>
-                        <div><span class="error-msg">{this.isInvalid('active') ? this.state.errors.active : ''}</span></div>
+                        <div><span className="field-name">Active</span></div>
+                        <div><span className="error-msg">{this.isInvalid('active') ? this.state.errors.active : ''}</span></div>
                      </div>
                 </div>
 
