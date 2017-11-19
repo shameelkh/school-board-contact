@@ -38,7 +38,7 @@ class SearchContainer extends React.Component {
                     </div>
                     <div className="col-md-1"></div>
                     <div className="col-md-3">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" className="btn btn-primary">Search</button>
                     </div>
                 </form>
             </div>

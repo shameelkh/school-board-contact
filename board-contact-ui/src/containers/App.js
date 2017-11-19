@@ -42,12 +42,12 @@ class App extends Component {
                   </div>
 
                   <div className="row content">
-                     <h4 class="school-board-name">{boardName}</h4>
+                     <h4 className="school-board-name">{boardName}</h4>
                       <div>
-                        <div class="">
+                        <div>
                             <Navigation />
                         </div>
-                        <div class="main-content">
+                        <div className="main-content">
                             <Switch>
                                 <Route exact path={`${match.path}profile`} component={ProfilePageContainer} />
                                 <Route path={`${match.path}account-mgmt`} component={AccountMgmtPageContainer} />
