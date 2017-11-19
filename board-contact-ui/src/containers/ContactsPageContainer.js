@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { saveContact, addContact } from '../actions'
-import Contact from '../components/Contact'
-import EditContactForm from '../components/EditContactForm'
+import ContactsPage from '../components/ContactsPage'
 
 class ContactsPageContainer extends Component {
     constructor(props) {
@@ -61,43 +60,18 @@ class ContactsPageContainer extends Component {
         }
 
         return (
-            <div>
-                {!this.state.addingNewContact &&
-                    <button className="btn btn-success add-contact-btn"
-                        onClick={this.handleAddButton}>Add</button>
-                }
-
-                {this.state.addingNewContact &&
-                    <div className="group-section-contact">
-                        <div class="field-section-contact">
-                            <span class="field-content">New Contact</span>
-                        </div>
-
-                        <EditContactForm contact={ {boardNumber: this.props.boardNumber} }
-                                     cancelEditMode={this.cancelEditMode}
-                                     saveContact={this.props.handleAddContact} />
-                    </div>
-                }
-
-                {contacts.map(contact => (
-                    <div>
-                        {!this.state.inEditMode[contact.id] &&
-                            <Contact contact={contact}
-                                     enableEditMode={this.enableEditMode}
-                                     isExpanded={this.state.isExpanded[contact.id]}
-                                     handleExpand={this.handleExpand}/>
-                        }
-
-                        {this.state.inEditMode[contact.id] &&
-                            <EditContactForm contact={contact}
-                                             cancelEditMode={this.cancelEditMode}
-                                             saveContact={this.props.handleSaveContact}/>
-                        }
-                    </div>
-
-
-                ))}
-            </div>
+            <ContactsPage
+                contacts={contacts}
+                inEditMode={this.state.inEditMode}
+                enableEditMode={this.enableEditMode}
+                isExpanded={this.state.isExpanded}
+                handleExpand={this.handleExpand}
+                addingNewContact={this.state.addingNewContact}
+                handleAddButton={this.handleAddButton}
+                handleAddContact={this.props.handleAddButton}
+                boardNumber={this.props.boardNumber}
+                cancelEditMode={this.cancelEditMode}
+                handleSaveContact={this.props.handleSaveContact} />
         )
     }
 }
@@ -120,11 +94,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch( addContact(newContact) )
         }
     }
-}
-
-ContactsPageContainer.propTypes = {
-    contactInfo: PropTypes.object.isRequired,
-    boardNumber: PropTypes.number.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsPageContainer)
