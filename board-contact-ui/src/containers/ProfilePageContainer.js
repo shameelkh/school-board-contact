@@ -22,18 +22,16 @@ class ProfilePageContainer extends React.Component {
     }
 
     render() {
-        let board = this.props.boardInfo.board
-
-        if (board === null || board === undefined) {
-            return <div>No School Board Selected</div>
-        }
-
+        let boardInfo = this.props.boardInfo
+        let board = boardInfo.board
+        
         return (
             <div>
                 {!this.state.inEditMode &&
                     <ProfilePage
                         board={board}
-                        enableEditMode={this.enableEditMode} />
+                        enableEditMode={this.enableEditMode}
+                        isFetching={boardInfo.isFetching} />
                 }
 
                 {this.state.inEditMode &&

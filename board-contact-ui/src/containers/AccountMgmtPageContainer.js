@@ -24,18 +24,16 @@ class AccountMgmtPageContainer extends React.Component {
     }
 
     render() {
+        let boardInfo = this.props.boardInfo
         let board = this.props.boardInfo.board
-
-        if (board === null || board === undefined) {
-            return <div>No School Board Selected</div>
-        }
-
+        
         return (
             <div>
                 {!this.state.inEditMode &&
                     <AccountMgmtPage
                         board={board}
-                        enableEditMode={this.enableEditMode} />
+                        enableEditMode={this.enableEditMode} 
+                        isFetching={boardInfo.isFetching}/>
                 }
 
                 {this.state.inEditMode &&

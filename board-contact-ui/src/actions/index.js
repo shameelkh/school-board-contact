@@ -51,7 +51,7 @@ export const fetchBoard = (boardId) => {
 
 export const requestContacts = (selectedBoardId) => {
     return {
-        type: RECEIVE_CONTACTS,
+        type: REQUEST_CONTACTS,
         selectedBoardId
     }
 }
@@ -95,7 +95,7 @@ export const saveBoard = (updatedBoard) => {
 
 export const saveContact = (updatedContact) => {
     return (dispatch) => {
-
+        alert("called => " + updatedContact.id)
         fetch(BASE_API + '/contact', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},

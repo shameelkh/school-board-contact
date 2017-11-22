@@ -52,15 +52,13 @@ class ContactsPageContainer extends Component {
     }
 
     render() {
-        const contacts = this.props.contactInfo.contacts
-
-        if (contacts === undefined) {
-            return (<div><h1>No Contacts</h1></div>)
-        }
+        let contactInfo = this.props.contactInfo
+        let contacts = contactInfo.contacts
 
         return (
             <ContactsPage
                 contacts={contacts}
+                isFetching={contactInfo.isFetching}
                 inEditMode={this.state.inEditMode}
                 enableEditMode={this.enableEditMode}
                 isExpanded={this.state.isExpanded}

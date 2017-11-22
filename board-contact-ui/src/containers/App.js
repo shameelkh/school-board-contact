@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { fetchBoard, fetchContacts }  from '../actions'
+import { fetchBoard, fetchContacts } from '../actions'
 import ContactsPageContainer from '../containers/ContactsPageContainer'
 import Header from '../components/Header'
 import Navigation from '../components/Navigation'
@@ -37,28 +37,31 @@ class App extends Component {
         return (
             <Router>
                 <div className="container-fluid">
-                  <div className="row">
-                    <Header />
-                  </div>
+                    <div className="row">
+                        <Header />
+                    </div>
 
-                  <div className="row content">
-                     <h4 className="school-board-name">{boardName}</h4>
-                      <div>
+                    <div className="row content">
+                        <h4 className="school-board-name">{boardName}</h4>
                         <div>
-                            <Navigation />
+                            <div>
+                                <Navigation />
+                            </div>
+                            <div className="main-content">
+                                <Switch>
+                                    <Route exact path={`${match.path}profile`} component={ProfilePageContainer} />
+                                    <Route path={`${match.path}account-mgmt`} component={AccountMgmtPageContainer} />
+                                    <Route path={`${match.path}contacts`} component={ContactsPageContainer} />
+                                </Switch>
+                            </div>
                         </div>
-                        <div className="main-content">
-                            <Switch>
-                                <Route exact path={`${match.path}profile`} component={ProfilePageContainer} />
-                                <Route path={`${match.path}account-mgmt`} component={AccountMgmtPageContainer} />
-                                <Route path={`${match.path}contacts`} component={ContactsPageContainer} />
-                            </Switch>
-                        </div>
-                      </div>
-                  </div>
+                    </div>
+                    <div className="row content">
+                    </div>
                 </div>
             </Router>
-    )}
+        )
+    }
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -72,11 +75,11 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         loadBoardData: (selectedBoardId) => {
-            dispatch( fetchBoard(selectedBoardId) )
+            dispatch(fetchBoard(selectedBoardId))
         },
 
         loadContacts: (selectedBoardId) => {
-            dispatch( fetchContacts(selectedBoardId) )
+            dispatch(fetchContacts(selectedBoardId))
         }
     }
 }
