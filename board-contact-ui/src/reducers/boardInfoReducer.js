@@ -12,7 +12,7 @@ const receiveBoardInfo = (board) => {
     }
 }
 
-const boardInfo = (state = defaultState, action) => {
+const boardInfoReducer = (state = defaultState, action) => {
     switch (action.type) {
         case REQUEST_BOARD:
             return Object.assign({}, state, {isFetching: true})
@@ -25,4 +25,4 @@ const boardInfo = (state = defaultState, action) => {
     }
 }
 
-export default boardInfo;
+export default boardInfoReducer;

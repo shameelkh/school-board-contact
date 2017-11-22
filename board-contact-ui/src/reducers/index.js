@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux'
-import boardInfo from './boardInfo'
-import selectedBoardId from './selectedBoardId'
-import contactInfo from './contactInfo'
+import boardInfoReducer from './boardInfoReducer'
+import selectedBoardIdReducer from './selectedBoardIdReducer'
+import contactInfoReducer from './contactInfoReducer'
 
-const boardContactAppReducer = combineReducers({selectedBoardId, boardInfo, contactInfo})
+const stateTree = {
+    boardInfo: boardInfoReducer,
+    contactInfo: contactInfoReducer,
+    selectedBoardId: selectedBoardIdReducer
+}
+
+const boardContactAppReducer = combineReducers(stateTree)
 
 export default boardContactAppReducer;
