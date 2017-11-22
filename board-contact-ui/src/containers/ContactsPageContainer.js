@@ -54,7 +54,8 @@ class ContactsPageContainer extends Component {
     render() {
         let contactInfo = this.props.contactInfo
         let contacts = contactInfo.contacts
-
+        let boardNumber = (this.props.selectedBoardId ? this.props.selectedBoardId : 0)
+        
         return (
             <ContactsPage
                 contacts={contacts}
@@ -66,7 +67,7 @@ class ContactsPageContainer extends Component {
                 addingNewContact={this.state.addingNewContact}
                 handleAddButton={this.handleAddButton}
                 handleAddContact={this.props.handleAddContact}
-                boardNumber={this.props.boardNumber}
+                boardNumber={this.props.selectedBoardId}
                 cancelEditMode={this.cancelEditMode}
                 handleSaveContact={this.props.handleSaveContact} />
         )
@@ -77,7 +78,7 @@ class ContactsPageContainer extends Component {
 const mapStateToProps = (state) => {
     return {
         contactInfo: state.contactInfo,
-        boardNumber: (state.boardInfo.board ? state.boardInfo.board.boardNumber : 0)
+        selectedBoardId: state.selectedBoardId
     }
 }
 

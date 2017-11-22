@@ -1,15 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-const ProfilePage = ({ board, enableEditMode, isFetching }) => {
+const ProfilePage = ({ board, enableEditMode, notification, isSavingData }) => {
 
     return (
         <div>
-            {isFetching &&
-                <span className="loading">Loading Data...</span>
+            {notification.isFetching &&
+                <span className="notification">Loading Data...</span>
             }
 
-            {!isFetching &&
+            {notification.failedToFetch &&
+                <span className="notification">Could not find board</span>
+            }
+
+            {!notification.isFetching && !notification.failedToFetch &&
                 <div>
                     <div className="group-section">
                         <div className="field-section">
@@ -41,6 +45,15 @@ const ProfilePage = ({ board, enableEditMode, isFetching }) => {
                     </div>
 
                     <button className="btn btn-success" onClick={enableEditMode}>Edit</button>
+                    
+                    <br/><br/>
+                    {isSavingData &&
+                        <span className="notification">Saving...</span>
+                    }
+
+                    {notification.failedToSave && 
+                        <span className="notification">Failed To Save</span>
+                    }
                 </div>
             }
         </div>
@@ -50,7 +63,8 @@ const ProfilePage = ({ board, enableEditMode, isFetching }) => {
 ProfilePage.propTypes = {
     board: PropTypes.object.isRequired,
     enableEditMode: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired
+    notification: PropTypes.object.isRequired,
+    isSavingData: PropTypes.bool.isRequired
 }
 
 export default ProfilePage;

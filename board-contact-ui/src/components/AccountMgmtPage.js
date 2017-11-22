@@ -1,15 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-const AccountMgmtPage = ({ board, enableEditMode, isFetching }) => {
+const AccountMgmtPage = ({ board, enableEditMode, notification }) => {
 
     return (
         <div>
-            {isFetching &&
-                <span className="loading">Loading Data...</span>
+            {notification.isFetching &&
+                <span className="notification">Loading Data...</span>
             }
 
-            {!isFetching &&
+            {notification.failedToFetch &&
+                <span className="notification">Could not find board</span>
+            }
+
+            {!notification.isFetching && !notification.failedToFetch &&
                 <div>
                     <div className="group-section">
                         <div className="field-section">
@@ -44,6 +48,7 @@ const AccountMgmtPage = ({ board, enableEditMode, isFetching }) => {
 
 AccountMgmtPage.propTypes = {
     board: PropTypes.object.isRequired,
+    notification: PropTypes.object.isRequired,
     enableEditMode: PropTypes.func.isRequired
 }
 

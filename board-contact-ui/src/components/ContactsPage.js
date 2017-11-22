@@ -10,7 +10,11 @@ const ContactsPage = (props) => {
                 <span className="loading">Loading Data...</span>
             }
 
-            {!props.isFetching &&
+            {(!props.isFetching && props.contacts === null)  &&
+                <span className="notification">Could not find contacts for board</span>
+            }
+
+            {(!props.isFetching && props.contacts !== null) &&
                 <div>
                     {!props.addingNewContact &&
                         <button className="btn btn-success add-contact-btn"
