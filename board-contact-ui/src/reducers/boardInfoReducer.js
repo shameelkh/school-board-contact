@@ -1,24 +1,26 @@
 import { REQUEST_BOARD, RECEIVE_BOARD } from '../actions'
 
 const defaultState = {
+    board: {},
+    errors: [],
     isFetching: false,
-    board: undefined
 }
 
-const receiveBoardInfo = (board) => {
+const receiveBoardInfo = (action) => {
     return {
-        isFetching: false,
-        board
+        board: action.board,
+        errors: action.errors,
+        isFetching: false
     }
 }
 
 const boardInfoReducer = (state = defaultState, action) => {
     switch (action.type) {
         case REQUEST_BOARD:
-            return Object.assign({}, state, {isFetching: true})
+            return Object.assign({}, state, { isFetching: true, errors: [] })
 
         case RECEIVE_BOARD:
-            return Object.assign({}, receiveBoardInfo(action.board))
+            return Object.assign({}, receiveBoardInfo(action))
 
         default:
             return state
