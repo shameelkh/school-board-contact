@@ -77,14 +77,14 @@ export const receiveContact = (contact) => {
 }
 
 export const fetchContacts = (boardId) => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch(requestContacts(boardId))
 
         fetch(BASE_API + '/contacts/' + boardId)
             .then(response => response.json())
             .then(contacts => dispatch(receiveContacts(contacts)))
             .catch(error => {
-                dispatch(receiveContacts(getState().contactInfo.contacts, [ERROR.FETCHING_CONTACT]))
+                dispatch(receiveContacts([], [ERROR.FETCHING_CONTACT]))
             })
     }
 }
@@ -106,8 +106,7 @@ export const saveBoard = (updatedBoard) => {
 }
 
 export const saveContact = (updatedContact) => {
-    return (dispatch) => {
-        alert("called => " + updatedContact.id)
+    return (dispatch, getState) => {
         fetch(BASE_API + '/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -115,6 +114,9 @@ export const saveContact = (updatedContact) => {
         })
             .then(response => response.json())
             .then(contact => dispatch(receiveContact(contact)))
+            .catch(error => {
+                dispatch(receiveContact(getState().contactInfo.contacts, [ERROR.SAVING_CONTACT]))
+            })
     }
 }
 
