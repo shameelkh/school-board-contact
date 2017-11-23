@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { saveBoard } from '../actions'
+import * as ERROR from '../actions/errors'
 import AccountMgmtPage from '../components/AccountMgmtPage'
 import EditAccountMgmtForm from '../components/EditAccountMgmtForm'
 
@@ -23,19 +24,29 @@ class AccountMgmtPageContainer extends React.Component {
         this.setState({ inEditMode: false })
     }
 
-    render() {
-        let board = this.props.boardInfo.board
+    extractNotification = (boardInfo) => {
+        let savingErrors = boardInfo.errors.filter(error => error === ERROR.SAVING_BOARD)
+        let fetchingErrors = boardInfo.errors.filter(error => error === ERROR.FETCHING_BOARD)
 
-        if (board === null || board === undefined) {
-            return <div>No School Board Selected</div>
+        return {
+            isFetching: boardInfo.isFetching,
+            failedToSave: (savingErrors.length > 0 ? true : false),
+            failedToFetch: (fetchingErrors.length > 0 ? true : false)
         }
+    }
+
+    render() {
+        let boardInfo = this.props.boardInfo
+        let board = this.props.boardInfo.board
+        let notification = this.extractNotification(this.props.boardInfo)
 
         return (
             <div>
                 {!this.state.inEditMode &&
                     <AccountMgmtPage
                         board={board}
-                        enableEditMode={this.enableEditMode} />
+                        enableEditMode={this.enableEditMode} 
+                        notification={notification}/>
                 }
 
                 {this.state.inEditMode &&

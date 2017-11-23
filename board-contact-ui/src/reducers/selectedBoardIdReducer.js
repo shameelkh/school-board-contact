@@ -1,6 +1,6 @@
 import { UPDATE_SELECTED_BOARD_ID } from '../actions'
 
-const selectedBoardId = (state = "1", action) => {
+const selectedBoardIdReducer = (state = "1", action) => {
 
     switch (action.type) {
         case UPDATE_SELECTED_BOARD_ID:
@@ -11,4 +11,4 @@ const selectedBoardId = (state = "1", action) => {
     }
 }
 
-export default selectedBoardId;
+export default selectedBoardIdReducer;

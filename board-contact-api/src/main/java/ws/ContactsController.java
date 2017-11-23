@@ -13,15 +13,17 @@ public class ContactsController {
 
     @CrossOrigin
     @RequestMapping(value = "/contacts/{boardNumber}", method = RequestMethod.GET)
-    public ResponseEntity getContacts(@PathVariable int boardNumber) {
+    public ResponseEntity getContacts(@PathVariable int boardNumber) throws InterruptedException {
         List<Contact> contactsForBoard = Application.boardToContactsMap.get(boardNumber);
+
+        Thread.sleep(1300);
 
         return new ResponseEntity(contactsForBoard, HttpStatus.OK);
     }
 
     @CrossOrigin
     @RequestMapping(value = "/contact", method = RequestMethod.POST)
-    public ResponseEntity saveContact(@RequestBody Contact updatedContact) {
+    public ResponseEntity saveContact(@RequestBody Contact updatedContact) throws InterruptedException {
         List<Contact> contactsForBoard = Application.boardToContactsMap.get(updatedContact.getBoardNumber());
 
         for(int index = 0; index < contactsForBoard.size(); index++) {
@@ -33,17 +35,21 @@ public class ContactsController {
             }
         }
 
+        Thread.sleep(1300);
+
         return new ResponseEntity(updatedContact, HttpStatus.OK);
     }
 
     @CrossOrigin
     @RequestMapping(value = "/add/contact", method = RequestMethod.POST)
-    public ResponseEntity addContact(@RequestBody Contact newContact) {
+    public ResponseEntity addContact(@RequestBody Contact newContact) throws InterruptedException {
         int newContactId = Application.getNewId();
         newContact.setId(newContactId);
 
         List<Contact> listOfBoardContacts = Application.boardToContactsMap.get(newContact.getBoardNumber());
         listOfBoardContacts.add(newContact);
+
+        Thread.sleep(1300);
 
         return new ResponseEntity(newContact, HttpStatus.OK);
     }

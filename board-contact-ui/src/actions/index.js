@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import * as ERROR from './errors'
 
 export const UPDATE_SELECTED_BOARD_ID = 'UPDATE_SELECTED_BOARD_ID'
 
@@ -32,34 +33,39 @@ export const requestBoard = (selectedBoardId) => {
     }
 }
 
-export const receiveBoard = (board) => {
+export const receiveBoard = (board, errors = []) => {
     return {
         type: RECEIVE_BOARD,
-        board
+        board,
+        errors
     }
 }
 
 export const fetchBoard = (boardId) => {
-    return (dispatch) => {
-        dispatch( requestBoard(boardId) )
+    return (dispatch, getState) => {
+        dispatch(requestBoard(boardId))
 
         fetch(BASE_API + '/school-board/' + boardId)
-                    .then(response => response.json())
-                    .then(board => dispatch(receiveBoard(board)))
+            .then(response => response.json())
+            .then(board => dispatch(receiveBoard(board)))
+            .catch(error => {
+                dispatch(receiveBoard({}, [ERROR.FETCHING_BOARD]))
+            })
     }
 }
 
 export const requestContacts = (selectedBoardId) => {
     return {
-        type: RECEIVE_CONTACTS,
+        type: REQUEST_CONTACTS,
         selectedBoardId
     }
 }
 
-export const receiveContacts = (contacts) => {
+export const receiveContacts = (contacts, errors = []) => {
     return {
         type: RECEIVE_CONTACTS,
-        contacts
+        contacts,
+        errors
     }
 }
 
@@ -72,37 +78,45 @@ export const receiveContact = (contact) => {
 
 export const fetchContacts = (boardId) => {
     return (dispatch) => {
-        dispatch( requestContacts(boardId) )
+        dispatch(requestContacts(boardId))
 
         fetch(BASE_API + '/contacts/' + boardId)
-                    .then(response => response.json())
-                    .then(contacts => dispatch( receiveContacts(contacts) ))
+            .then(response => response.json())
+            .then(contacts => dispatch(receiveContacts(contacts)))
+            .catch(error => {
+                dispatch(receiveContacts([], [ERROR.FETCHING_CONTACT]))
+            })
     }
 }
 
 export const saveBoard = (updatedBoard) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
 
         fetch(BASE_API + '/school-board', {
             method: 'POST',
-            headers: {'Content-Type':'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedBoard)
         })
-          .then(response => response.json())
-          .then(board => dispatch(receiveBoard(board)))
+            .then(response => response.json())
+            .then(board => dispatch(receiveBoard(board)))
+            .catch(error => {
+                dispatch(receiveBoard(getState().boardInfo.board, [ERROR.SAVING_BOARD]))
+            })
     }
 }
 
 export const saveContact = (updatedContact) => {
-    return (dispatch) => {
-
+    return (dispatch, getState) => {
         fetch(BASE_API + '/contact', {
             method: 'POST',
-            headers: {'Content-Type':'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedContact)
         })
             .then(response => response.json())
-            .then(contact => dispatch( receiveContact(contact) ))
+            .then(contact => dispatch(receiveContact(contact)))
+            .catch(error => {
+                dispatch(receiveContact(getState().contactInfo.contacts, [ERROR.SAVING_CONTACT]))
+            })
     }
 }
 
@@ -111,10 +125,10 @@ export const addContact = (newContact) => {
 
         fetch(BASE_API + '/add/contact', {
             method: 'POST',
-            headers: {'Content-Type':'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newContact)
         })
             .then(response => response.json())
-            .then(contact => dispatch( receiveContact(contact) ) )
+            .then(contact => dispatch(receiveContact(contact)))
     }
 }

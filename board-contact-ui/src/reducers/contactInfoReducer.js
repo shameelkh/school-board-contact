@@ -32,7 +32,7 @@ const receiveSingleContact = (contacts, receivedContact) => {
     return newContactList
 }
 
-const contactInfo = (state = defaultContactInfo, action) => {
+const contactInfoReducer = (state = defaultContactInfo, action) => {
 
     switch(action.type) {
 
@@ -50,4 +50,4 @@ const contactInfo = (state = defaultContactInfo, action) => {
     }
 }
 
-export default contactInfo
+export default contactInfoReducer
